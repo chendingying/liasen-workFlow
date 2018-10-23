@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>cld</title>
+    <meta http-equiv="Content-Language" content="zh-CN">
+    <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+</head>
+
+<script type='text/javascript'>
+
+    function getProjectHost() {
+        var href = window.document.location.href;
+        var pathName = window.document.location.pathname;
+        var pos = href.indexOf(pathName);
+        var localhostPaht = href.substring(0, pos);
+        var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
+        return localhostPaht + projectName;
+    }
+    document.location = getProjectHost() + "/swagger-ui.html";
+
+</script>
+<body>
+
+</body>
+
+</html>

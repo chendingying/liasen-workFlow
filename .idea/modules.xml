@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/common-module/common-module.iml" filepath="$PROJECT_DIR$/common-module/common-module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-module/flow-service/flow-service.iml" filepath="$PROJECT_DIR$/service-module/flow-service/flow-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-module/form-service/form-service.iml" filepath="$PROJECT_DIR$/service-module/form-service/form-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-module/identity-service/identity-service.iml" filepath="$PROJECT_DIR$/service-module/identity-service/identity-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/liansen-workFlow.iml" filepath="$PROJECT_DIR$/liansen-workFlow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-module/service-module.iml" filepath="$PROJECT_DIR$/service-module/service-module.iml" />
+    </modules>
+  </component>
+</project>

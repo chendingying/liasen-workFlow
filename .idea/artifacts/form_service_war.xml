@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="form-service:war">
+    <output-path>$PROJECT_DIR$/service-module/form-service/target</output-path>
+    <root id="archive" name="form-service-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="form-service:war exploded" />
+    </root>
+  </artifact>
+</component>
