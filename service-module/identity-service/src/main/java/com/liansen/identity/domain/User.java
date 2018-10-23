@@ -1,13 +1,9 @@
 package com.liansen.identity.domain;
 
-import com.liansen.common.domain.BaseEntity;
-import com.liansen.common.model.ObjectMap;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
-import javax.transaction.Transactional;
 import java.sql.Timestamp;
-import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
 

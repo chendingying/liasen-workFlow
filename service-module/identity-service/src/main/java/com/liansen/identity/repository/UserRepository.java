@@ -14,4 +14,7 @@ public interface UserRepository extends BaseRepository<User, Integer> {
 
 	@Query("select a from User a, UserGroup b where a.id = b.userId and b.groupId = ?1 ")
 	List<User> findByGroupId(int groupId);
+
+	@Query("select a.id from User a, UserGroup b where a.id = b.userId and b.groupId = ?1")
+	List<Integer> findIdByGroupId(int groupId);
 }

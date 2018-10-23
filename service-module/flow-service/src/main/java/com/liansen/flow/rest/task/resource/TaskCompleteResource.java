@@ -4,6 +4,7 @@ import com.liansen.common.model.Authentication;
 import com.liansen.common.model.ExecuteStatus;
 import com.liansen.flow.constant.ErrorConstant;
 import com.liansen.flow.rest.phpClient.PhpService;
+import com.liansen.flow.rest.phpClient.repository.UserGroupRepository;
 import com.liansen.flow.rest.phpClient.request.PhpTaskIdAndTaskId;
 import com.liansen.flow.rest.phpClient.repository.PhpTaskAndTaskRepository;
 import com.liansen.flow.rest.task.TaskCompleteRequest;
@@ -20,7 +21,6 @@ import org.flowable.engine.RepositoryService;
 import org.flowable.engine.RuntimeService;
 import org.flowable.engine.runtime.ProcessInstance;
 import org.flowable.identitylink.api.IdentityLink;
-import org.flowable.idm.api.Group;
 import org.flowable.idm.api.User;
 import org.flowable.task.api.DelegationState;
 import org.flowable.task.api.Task;
@@ -58,6 +58,8 @@ public class TaskCompleteResource extends BaseTaskResource {
     @Autowired
     PhpTaskAndTaskRepository phpTaskAndTaskRepository;
 
+    @Autowired
+    UserGroupRepository userGroupRepository;
 
     @ApiOperation("任务完成")
     @PutMapping(value = "/tasks/{taskId}/complete",name = "任务完成")
@@ -208,27 +210,31 @@ public class TaskCompleteResource extends BaseTaskResource {
     }
 
     public void PhpServiceTask(Map<String,String> map,Task tasks){
+        List<Integer> userId = new ArrayList<>();
         if(map.get("group") != null){
-            List<Group> user = identityService.createGroupQuery().list();
-            user.size();
+            userId = userGroupRepository.getUserGroup(Integer.valueOf(map.get("group")));
+        }else{
+            userId.add(Integer.valueOf(map.get("user")));
         }
-        String userId = map.get("user");
-        User user = identityService.createUserQuery().userId(userId).singleResult();
-        TaskResponse taskResponse = new TaskResponse();
-        taskResponse.setAssignee(user.getFirstName());
-        taskResponse.setCreateTime(tasks.getCreateTime());
-        taskResponse.setId(tasks.getId());
-        taskResponse.setDueDate(tasks.getDueDate());
-        taskResponse.setName(tasks.getName());
-        String json =  phpService.phpTaskService(taskResponse);
-        JSONObject jsonObject = JSONObject.fromObject(json);
-        ExecuteStatus status = (ExecuteStatus)JSONObject.toBean(jsonObject, ExecuteStatus.class);
-        if(status.getResult() == 0){
-            PhpTaskIdAndTaskId phpTask = new PhpTaskIdAndTaskId();
-            phpTask.setTaskId(tasks.getId());
-            phpTask.setPhpTaskId(status.getId());
-            phpTaskAndTaskRepository.save(phpTask);
+        for(Integer id :userId){
+            User user = identityService.createUserQuery().userId(id.toString()).singleResult();
+            TaskResponse taskResponse = new TaskResponse();
+            taskResponse.setAssignee(user.getFirstName());
+            taskResponse.setCreateTime(tasks.getCreateTime());
+            taskResponse.setId(tasks.getId());
+            taskResponse.setDueDate(tasks.getDueDate());
+            taskResponse.setName(tasks.getName());
+            String json =  phpService.phpTaskService(taskResponse);
+            JSONObject jsonObject = JSONObject.fromObject(json);
+            ExecuteStatus status = (ExecuteStatus)JSONObject.toBean(jsonObject, ExecuteStatus.class);
+            if(status.getResult() == 0){
+                PhpTaskIdAndTaskId phpTask = new PhpTaskIdAndTaskId();
+                phpTask.setTaskId(tasks.getId());
+                phpTask.setPhpTaskId(status.getId());
+                phpTaskAndTaskRepository.save(phpTask);
+            }
         }
+
     }
 
 }

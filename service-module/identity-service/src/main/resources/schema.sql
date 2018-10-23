@@ -1,1 +1,1 @@
-USE ksh
+use ksh;

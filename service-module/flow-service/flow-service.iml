@@ -104,7 +104,6 @@
     <orderEntry type="library" name="Maven: io.springfox:springfox-schema:2.4.0" level="project" />
     <orderEntry type="library" name="Maven: io.springfox:springfox-swagger-common:2.4.0" level="project" />
     <orderEntry type="library" name="Maven: io.springfox:springfox-spring-web:2.4.0" level="project" />
-    <orderEntry type="module" module-name="form-service" />
     <orderEntry type="library" name="Maven: org.flowable:flowable-spring-boot-starter-process:6.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.flowable:flowable-spring-boot-autoconfigure:6.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.flowable:flowable-engine:6.3.0" level="project" />

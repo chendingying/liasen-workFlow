@@ -115,6 +115,10 @@ public class GroupResource extends BaseResource {
         return userRepository.findByGroupId(id);
     }
 
+    @ApiOperation(value = "群组下的用户Id" , httpMethod = "GET")
+    @GetMapping(value = "/groups/{id}/usersId")
+    @ResponseStatus(value = HttpStatus.OK)
+    public List<Integer> getGroupUsersId(@PathVariable Integer id){return userRepository.findIdByGroupId(id);}
     @ApiOperation(value = "删除群组下的用户信息" , httpMethod = "DELETE")
     @DeleteMapping(value = "/groups/{id}/users/{userId}")
     @ResponseStatus(value = HttpStatus.OK)
