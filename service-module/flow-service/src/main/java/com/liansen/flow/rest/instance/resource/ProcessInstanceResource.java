@@ -13,6 +13,7 @@ import com.liansen.flow.rest.phpClient.PhpService;
 import com.liansen.flow.rest.phpClient.controller.PhpTaskController;
 import com.liansen.flow.rest.phpClient.repository.PhpTaskAndTaskRepository;
 import com.liansen.flow.rest.phpClient.repository.PhpTaskRepository;
+import com.liansen.flow.rest.phpClient.repository.UserGroupRepository;
 import com.liansen.flow.rest.phpClient.request.PhpTaskIdAndTaskId;
 import com.liansen.flow.rest.phpClient.request.PhpTaskRequest;
 import com.liansen.flow.rest.task.TaskResponse;
@@ -20,12 +21,20 @@ import com.liansen.flow.rest.task.resource.TaskCompleteResource;
 import com.liansen.flow.rest.variable.RestVariable;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.flowable.bpmn.model.BpmnModel;
+import org.flowable.bpmn.model.Process;
+import org.flowable.bpmn.model.UserTask;
 import org.flowable.engine.IdentityService;
+import org.flowable.engine.ProcessEngine;
+import org.flowable.engine.RepositoryService;
+import org.flowable.engine.RuntimeService;
 import org.flowable.engine.common.api.query.QueryProperty;
 import org.flowable.engine.history.HistoricProcessInstance;
 import org.flowable.engine.history.HistoricProcessInstanceQuery;
 import org.flowable.engine.impl.HistoricProcessInstanceQueryProperty;
 import org.flowable.engine.impl.persistence.entity.ExecutionEntity;
+import org.flowable.engine.repository.ProcessDefinition;
+import org.flowable.engine.repository.ProcessDefinitionQuery;
 import org.flowable.engine.runtime.ProcessInstance;
 import org.flowable.identitylink.api.IdentityLink;
 import org.flowable.idm.api.User;
@@ -38,11 +47,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.testng.annotations.Test;
 import springfox.documentation.annotations.ApiIgnore;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 流程实例接口
@@ -63,6 +71,12 @@ public class ProcessInstanceResource extends BaseProcessInstanceResource {
 
 	@Autowired
 	PhpTaskAndTaskRepository phpTaskAndTaskRepository;
+
+	@Autowired
+	RepositoryService repositoryService;
+
+	@Autowired
+	UserGroupRepository userGroupRepository;
 	private static Map<String, QueryProperty> allowedSortProperties = new HashMap<String, QueryProperty>();
 
 	static {
@@ -153,6 +167,24 @@ public class ProcessInstanceResource extends BaseProcessInstanceResource {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public ProcessInstanceStartResponse startProcessInstance(@RequestBody ProcessInstanceStartRequest request) {
 
+		Map<String,Object> completeVariables = new HashMap<String,Object>();
+		ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery().processDefinitionId(request.getProcessDefinitionId()).singleResult();
+		BpmnModel bpmnModel = repositoryService.getBpmnModel(request.getProcessDefinitionId());
+		Process process = bpmnModel.getProcesses().get(0);
+		Collection<UserTask> flowElements = process.findFlowElementsOfType(UserTask.class);
+		for (UserTask userTask : flowElements) {
+			List<String> listCandidateUsers = new ArrayList<String>();
+			List<String> listCandidateGroups = userTask.getCandidateGroups();
+			listCandidateUsers = userTask.getCandidateUsers();
+			if (listCandidateGroups.size() != 0) {
+				for (String groups : listCandidateGroups) {
+					listCandidateUsers = userGroupRepository.getUserGroup(Integer.valueOf(groups));
+				}
+			}
+			if (listCandidateUsers.size() != 0) {
+				completeVariables.put(userTask.getName(), listCandidateUsers);
+			}
+		}
 		if (request.getProcessDefinitionId() == null && request.getProcessDefinitionKey() == null) {
 			exceptionFactory.throwIllegalArgument(ErrorConstant.PARAM_NOT_FOUND, "processDefinitionId或者processDefinitionKey");
 		}
@@ -184,15 +216,13 @@ public class ProcessInstanceResource extends BaseProcessInstanceResource {
 		org.flowable.engine.common.impl.identity.Authentication.setAuthenticatedUserId(Authentication.getUserId());
 		
 		ProcessInstance instance = null;
-
 		TokenUserIdUtils tokenUserIdUtils = new TokenUserIdUtils();
 		identityService.setAuthenticatedUserId(tokenUserIdUtils.tokenUserId());
-
 		if (request.getProcessDefinitionId() != null) {
 			//启动流程
 			ProcessInstance processInstance =  runtimeService.createProcessInstanceQuery().processDefinitionId(request.getProcessDefinitionId()).singleResult();
 			if(processInstance == null){
-				instance = runtimeService.startProcessInstanceById(request.getProcessDefinitionId(), request.getBusinessKey(), startVariables);
+				instance = runtimeService.startProcessInstanceById(request.getProcessDefinitionId(), request.getBusinessKey(), completeVariables);
 				loggerConverter.save("启动了流程 '" + instance.getProcessDefinitionName() + "'");
 			}
 		} else if (request.getProcessDefinitionKey() != null) {
@@ -253,4 +283,13 @@ public class ProcessInstanceResource extends BaseProcessInstanceResource {
 
 		loggerConverter.save("删除了流程实例 '" +historicProcessInstance.getProcessDefinitionName()+ "'");
 	}
+
+	@Test
+	public void setVariableValues(){
+
+		String executionId="90001";
+		runtimeService.setVariable(executionId, "days", 2);
+		runtimeService.getVariable(executionId,"days");
+	}
+
 }

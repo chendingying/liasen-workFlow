@@ -47,20 +47,15 @@ public class SaveModelEditorCmd implements Command<Void>, Serializable  {
 
         try {
             byte[] bytes = editorJson.getBytes("utf-8");
-            System.out.println(new String(bytes));
             repositoryService.addModelEditorSource(modelId, bytes);
             ObjectNode modelNode = (ObjectNode) new ObjectMapper().readTree(bytes);
             BpmnModel bpmnModel = new BpmnJsonConverter().convertToBpmnModel(modelNode);
             BpmnXMLConverter xmlConverter = new BpmnXMLConverter();
             byte[] bpmnBytes = xmlConverter.convertToXML(bpmnModel);
-            System.out.println(new String(bpmnBytes));
             XMLInputFactory xif = XMLInputFactory.newInstance();
             InputStreamReader xmlIn = new InputStreamReader(new ByteArrayInputStream(bpmnBytes), "UTF-8");
             XMLStreamReader xtr = xif.createXMLStreamReader(xmlIn);
             bpmnModel = new BpmnXMLConverter().convertToBpmnModel(xtr);
-            System.out.println(processEngineConfiguration.getActivityFontName());
-            System.out.println(processEngineConfiguration.getLabelFontName());
-            System.out.println(processEngineConfiguration.getAnnotationFontName());
             ProcessDiagramGenerator diagramGenerator = processEngineConfiguration.getProcessDiagramGenerator();
             InputStream resource = diagramGenerator.generateDiagram(bpmnModel,"png",
                     Collections.<String> emptyList(), Collections.<String> emptyList(),
