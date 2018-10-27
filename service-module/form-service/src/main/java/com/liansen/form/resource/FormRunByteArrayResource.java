@@ -85,9 +85,9 @@ public class FormRunByteArrayResource  extends BaseResource {
     @ApiOperation("添加流程任务下的表单")
     @PostMapping("/form-definition/json")
     public void saveFormdefinitionJson(@RequestBody InheritRunByteArray inheritRunByteArray) throws Exception{
-        RunByteArray runByteArray = new RunByteArray();
-        if(inheritRunByteArray.getId() != 0){
-            runByteArray = getRunByteArrayFromRequest(inheritRunByteArray.getId());
+        RunByteArray runByteArray = runByteArrayRepository.findByProcInstId(inheritRunByteArray.getProcInstId());
+        if(runByteArray == null){
+            runByteArray = new RunByteArray();
         }
         runByteArray.setTableKey(inheritRunByteArray.getTableKey());
         runByteArray.setProcInstId(inheritRunByteArray.getProcInstId());

@@ -19,8 +19,12 @@ import org.flowable.engine.IdentityService;
 import org.flowable.engine.ProcessEngine;
 import org.flowable.engine.RepositoryService;
 import org.flowable.engine.RuntimeService;
+import org.flowable.engine.impl.RepositoryServiceImpl;
+import org.flowable.engine.impl.persistence.entity.ExecutionEntity;
+import org.flowable.engine.impl.persistence.entity.ProcessDefinitionEntity;
 import org.flowable.engine.runtime.ProcessInstance;
 import org.flowable.identitylink.api.IdentityLink;
+import org.flowable.identitylink.service.impl.persistence.entity.IdentityLinkEntity;
 import org.flowable.idm.api.User;
 import org.flowable.task.api.DelegationState;
 import org.flowable.task.api.Task;
@@ -107,7 +111,13 @@ public class TaskCompleteResource extends BaseTaskResource {
                     Collection<UserTask> flowElements = process.findFlowElementsOfType(UserTask.class);
                     for (UserTask userTask : flowElements) {
                         List<String> listCandidateUsers = new ArrayList<String>();
+                        List<String> listCandidateGroups = userTask.getCandidateGroups();
                         listCandidateUsers = userTask.getCandidateUsers();
+                        if(listCandidateGroups.size() != 0){
+                            for(String groups : listCandidateGroups){
+                                 listCandidateUsers = userGroupRepository.getUserGroup(Integer.valueOf(groups));
+                            }
+                        }
                         if(listCandidateUsers.size() != 0){
                             completeVariables.put(userTask.getName(),listCandidateUsers);
                         }
@@ -116,6 +126,7 @@ public class TaskCompleteResource extends BaseTaskResource {
                 }
             }
         }
+
         loggerConverter.save("完成了任务 '" + task.getName() + "'");
     }
 
@@ -210,13 +221,13 @@ public class TaskCompleteResource extends BaseTaskResource {
     }
 
     public void PhpServiceTask(Map<String,String> map,Task tasks){
-        List<Integer> userId = new ArrayList<>();
+        List<String> userId = new ArrayList<>();
         if(map.get("group") != null){
             userId = userGroupRepository.getUserGroup(Integer.valueOf(map.get("group")));
         }else{
-            userId.add(Integer.valueOf(map.get("user")));
+            userId.add(map.get("user"));
         }
-        for(Integer id :userId){
+        for(String id :userId){
             User user = identityService.createUserQuery().userId(id.toString()).singleResult();
             TaskResponse taskResponse = new TaskResponse();
             taskResponse.setAssignee(user.getFirstName());
@@ -234,7 +245,6 @@ public class TaskCompleteResource extends BaseTaskResource {
                 phpTaskAndTaskRepository.save(phpTask);
             }
         }
-
     }
 
 }

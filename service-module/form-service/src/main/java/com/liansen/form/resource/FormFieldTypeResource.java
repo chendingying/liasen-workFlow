@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Created by CDZ on 2018/9/21.
@@ -55,15 +56,13 @@ public class FormFieldTypeResource extends BaseResource {
 
     @ApiOperation("添加表单字段类型")
     @PostMapping("/form-fieldTypes")
-    @ResponseStatus(HttpStatus.CREATED)
     public void createFormFieldType(@RequestBody FormFieldType formFieldTypeRequest) {
         FormFieldType formFieldType = formFieldTypeRepository.findByName(formFieldTypeRequest.getName());
         if(formFieldType == null){
-            formFieldType.setKey(formFieldTypeRequest.getKey());
-            formFieldType.setName(formFieldTypeRequest.getName());
-            formFieldType.setRemark(formFieldTypeRequest.getRemark());
-            formFieldType.setStatus(formFieldTypeRequest.getStatus());
-             formFieldTypeRepository.save(formFieldType);
+            FormFieldType type = new FormFieldType();
+            type.setName(formFieldTypeRequest.getName());
+            type.setKey(UUID.randomUUID().toString());
+             formFieldTypeRepository.save(type);
         }
 }
     @ApiOperation("修改表单字段类型")

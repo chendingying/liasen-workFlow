@@ -57,9 +57,6 @@ public class ModelEditorResource extends BaseModelResource {
     @ResponseStatus(value = HttpStatus.OK)
     @Transactional(propagation = Propagation.REQUIRED)
     public void saveModelEditor(@PathVariable String modelId, @RequestBody ModelEditorJsonRequest values) {
-
-         String json =  values.getJsonXml();
-
         Model model = getModel(modelId, values.isNewVersion());
         if(!model.getKey().equals(values.getKey())) {
             checkModelKeyExists(values.getKey());

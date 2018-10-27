@@ -11,7 +11,9 @@ import com.liansen.flow.rest.instance.ProcessInstanceStartRequest;
 import com.liansen.flow.rest.instance.ProcessInstanceStartResponse;
 import com.liansen.flow.rest.phpClient.PhpService;
 import com.liansen.flow.rest.phpClient.controller.PhpTaskController;
+import com.liansen.flow.rest.phpClient.repository.PhpTaskAndTaskRepository;
 import com.liansen.flow.rest.phpClient.repository.PhpTaskRepository;
+import com.liansen.flow.rest.phpClient.request.PhpTaskIdAndTaskId;
 import com.liansen.flow.rest.phpClient.request.PhpTaskRequest;
 import com.liansen.flow.rest.task.TaskResponse;
 import com.liansen.flow.rest.task.resource.TaskCompleteResource;
@@ -29,6 +31,8 @@ import org.flowable.identitylink.api.IdentityLink;
 import org.flowable.idm.api.User;
 import org.flowable.idm.api.UserQuery;
 import org.flowable.task.api.Task;
+import org.flowable.task.api.history.HistoricTaskInstance;
+import org.flowable.task.api.history.HistoricTaskInstanceQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Propagation;
@@ -56,6 +60,9 @@ public class ProcessInstanceResource extends BaseProcessInstanceResource {
 	PhpService phpService;
 	@Autowired
 	TaskCompleteResource taskCompleteResource;
+
+	@Autowired
+	PhpTaskAndTaskRepository phpTaskAndTaskRepository;
 	private static Map<String, QueryProperty> allowedSortProperties = new HashMap<String, QueryProperty>();
 
 	static {
@@ -232,8 +239,18 @@ public class ProcessInstanceResource extends BaseProcessInstanceResource {
 
 		runtimeService.deleteProcessInstance(processInstanceId, deleteReason);
 		if (cascade) {
+			List<HistoricTaskInstance> list = historyService.createHistoricTaskInstanceQuery().processInstanceId(processInstanceId).list();
+			for(HistoricTaskInstance historicTaskInstance : list){
+				String taskId = historicTaskInstance.getId();
+				List<PhpTaskIdAndTaskId> phpTaskIdAndTaskIdList = phpTaskAndTaskRepository.findByTaskId(taskId);
+				for(PhpTaskIdAndTaskId phptask : phpTaskIdAndTaskIdList){
+					phpTaskAndTaskRepository.deleteByTaskId(phptask.getTaskId());
+					phpService.deletePhpTask(phptask.getPhpTaskId());
+				}
+			}
 			historyService.deleteHistoricProcessInstance(processInstanceId);
 		}
+
 		loggerConverter.save("删除了流程实例 '" +historicProcessInstance.getProcessDefinitionName()+ "'");
 	}
 }

@@ -26,7 +26,22 @@ spring:
   profiles:
     include: service-pro
   datasource:
-    url : jdbc:mysql://localhost:3306/liansen_flow?useUnicode=true&characterEncoding=UTF-8
+    url : jdbc:mysql://192.168.249.211:3306/liansen_flow?useUnicode=true&characterEncoding=UTF-8
+#    url : jdbc:mysql://localhost:3306/liansen_flow?useUnicode=true&characterEncoding=UTF-8
     username : root
     password: root
-  
+
+#熔断器超时
+#避免第一次调用失败
+hystrix:
+  threadpool:
+    default:
+      coreSize: 500
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
+        isolation:
+          thread:
+            timeoutInMilliseconds: 80000

@@ -1,6 +1,8 @@
 package com.liansen.identity.resource;
 
 
+import com.google.common.base.Functions;
+import com.google.common.collect.Lists;
 import com.liansen.common.jpa.Criteria;
 import com.liansen.common.jpa.Restrictions;
 import com.liansen.common.resource.BaseResource;
@@ -57,6 +59,16 @@ public class GroupResource extends BaseResource {
         criteria.add(Restrictions.eq("parentId", requestParams.get("parentId")));
         criteria.add(Restrictions.like("name", requestParams.get("name")));
         criteria.add(Restrictions.like("tenantId", requestParams.get("tenantId")));
+        return createPageResponse(groupRepository.findAll(criteria, getPageable(requestParams)));
+    }
+
+    @ApiOperation(value = "查询子群组信息" , httpMethod = "GET")
+    @GetMapping(value = "/groupChild")
+    @ResponseStatus(value = HttpStatus.OK)
+    public PageResponse groupClind(@ApiIgnore @RequestParam Map<String, String> requestParams){
+        requestParams.put("parentId","0");
+        Criteria<Group> criteria = new Criteria<Group>();
+        criteria.add(Restrictions.notEq("parentId", requestParams.get("parentId")));
         return createPageResponse(groupRepository.findAll(criteria, getPageable(requestParams)));
     }
 
@@ -118,7 +130,13 @@ public class GroupResource extends BaseResource {
     @ApiOperation(value = "群组下的用户Id" , httpMethod = "GET")
     @GetMapping(value = "/groups/{id}/usersId")
     @ResponseStatus(value = HttpStatus.OK)
-    public List<Integer> getGroupUsersId(@PathVariable Integer id){return userRepository.findIdByGroupId(id);}
+    public List<String> getGroupUsersId(@PathVariable Integer id){
+        List<Integer> userId = userRepository.findIdByGroupId(id);
+        List<String> strings = Lists.transform(userId, Functions.toStringFunction());
+        return strings;
+    }
+
+
     @ApiOperation(value = "删除群组下的用户信息" , httpMethod = "DELETE")
     @DeleteMapping(value = "/groups/{id}/users/{userId}")
     @ResponseStatus(value = HttpStatus.OK)

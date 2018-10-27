@@ -112,7 +112,5 @@
     <orderEntry type="library" name="Maven: io.springfox:springfox-schema:2.4.0" level="project" />
     <orderEntry type="library" name="Maven: io.springfox:springfox-swagger-common:2.4.0" level="project" />
     <orderEntry type="library" name="Maven: io.springfox:springfox-spring-web:2.4.0" level="project" />
-    <orderEntry type="module" module-name="identity-service" />
-    <orderEntry type="library" name="Maven: org.mindrot:jbcrypt:0.4" level="project" />
   </component>
 </module>

@@ -1,9 +1,11 @@
 package com.liansen.identity.domain;
 
+import com.liansen.common.model.ObjectMap;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -36,12 +38,12 @@ public class User implements java.io.Serializable {
 
 	@ApiModelProperty("修改时间")
 	private Timestamp updatedAt;
-//
-//	@ApiModelProperty("用户角色")
-//	private List<ObjectMap> userRoles;
-//
-//	@ApiModelProperty("用户分组")
-//	private List<ObjectMap> userGroups;
+
+	@ApiModelProperty("用户角色")
+	private List<ObjectMap> userRoles;
+
+	@ApiModelProperty("用户分组")
+	private List<ObjectMap> userGroups;
 
 	public User() {
 	}
@@ -118,5 +120,23 @@ public class User implements java.io.Serializable {
 
 	public void setUpdatedAt(Timestamp updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	@Transient
+	public List<ObjectMap> getUserRoles() {
+		return userRoles;
+	}
+
+	public void setUserRoles(List<ObjectMap> userRoles) {
+		this.userRoles = userRoles;
+	}
+
+	@Transient
+	public List<ObjectMap> getUserGroups() {
+		return userGroups;
+	}
+
+	public void setUserGroups(List<ObjectMap> userGroups) {
+		this.userGroups = userGroups;
 	}
 }

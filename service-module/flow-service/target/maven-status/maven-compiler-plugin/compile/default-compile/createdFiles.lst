@@ -33,6 +33,7 @@ com\liansen\flow\rest\task\resource\BaseTaskResource.class
 com\liansen\flow\rest\instance\resource\BaseProcessInstanceResource.class
 com\liansen\flow\rest\model\resource\ModelCopyResource.class
 com\liansen\flow\rest\phpClient\PhpService.class
+com\liansen\flow\rest\phpClient\repository\UserGroupHystric.class
 com\liansen\flow\rest\task\TaskEditRequest.class
 com\liansen\flow\test\b.class
 com\liansen\flow\rest\definition\ProcessDefinitionsPaginateList.class
@@ -42,6 +43,7 @@ com\liansen\flow\rest\variable\RestVariableConverter.class
 com\liansen\flow\config\FlowableIdmConfig.class
 com\liansen\flow\rest\log\Logger.class
 com\liansen\flow\rest\instance\ProcessInstanceStartRequest.class
+com\liansen\flow\rest\phpClient\repository\PhpTaskRepositoryHystric.class
 com\liansen\flow\rest\AbstractPaginateList.class
 com\liansen\flow\rest\task\resource\TaskClaimResource.class
 com\liansen\flow\rest\common\IdentityRequest.class
@@ -65,6 +67,7 @@ com\liansen\flow\rest\task\TaskCompleteRequest.class
 com\liansen\flow\rest\phpClient\request\PhpTaskRequest.class
 com\liansen\flow\rest\instance\ProcessInstancePaginateList.class
 com\liansen\flow\rest\model\resource\ModelImageResource.class
+com\liansen\flow\rest\phpClient\repository\UserGroupRepository.class
 com\liansen\flow\sayHello.class
 com\liansen\flow\rest\definition\resource\ProcessDefinitionActivateResource.class
 com\liansen\flow\rest\model\resource\BaseModelResource.class

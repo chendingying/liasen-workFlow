@@ -14,20 +14,23 @@ import org.flowable.engine.common.impl.interceptor.CommandContext;
 import org.flowable.engine.impl.util.CommandContextUtil;
 import org.flowable.image.ProcessDiagramGenerator;
 
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamReader;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.util.Collections;
 
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamReader;
+
+
 /**
  * 保存模型，同时生成图片
+ *
  * @author cdy
- * @create 2018/9/4
+ * @date 2018年4月12日
  */
-public class SaveModelEditorCmd implements Command<Void>, Serializable {
+public class SaveModelEditorCmd implements Command<Void>, Serializable  {
 
     private static final long serialVersionUID = 1L;
     private String modelId;
@@ -44,16 +47,20 @@ public class SaveModelEditorCmd implements Command<Void>, Serializable {
 
         try {
             byte[] bytes = editorJson.getBytes("utf-8");
+            System.out.println(new String(bytes));
             repositoryService.addModelEditorSource(modelId, bytes);
             ObjectNode modelNode = (ObjectNode) new ObjectMapper().readTree(bytes);
             BpmnModel bpmnModel = new BpmnJsonConverter().convertToBpmnModel(modelNode);
             BpmnXMLConverter xmlConverter = new BpmnXMLConverter();
             byte[] bpmnBytes = xmlConverter.convertToXML(bpmnModel);
+            System.out.println(new String(bpmnBytes));
             XMLInputFactory xif = XMLInputFactory.newInstance();
             InputStreamReader xmlIn = new InputStreamReader(new ByteArrayInputStream(bpmnBytes), "UTF-8");
             XMLStreamReader xtr = xif.createXMLStreamReader(xmlIn);
             bpmnModel = new BpmnXMLConverter().convertToBpmnModel(xtr);
-
+            System.out.println(processEngineConfiguration.getActivityFontName());
+            System.out.println(processEngineConfiguration.getLabelFontName());
+            System.out.println(processEngineConfiguration.getAnnotationFontName());
             ProcessDiagramGenerator diagramGenerator = processEngineConfiguration.getProcessDiagramGenerator();
             InputStream resource = diagramGenerator.generateDiagram(bpmnModel,"png",
                     Collections.<String> emptyList(), Collections.<String> emptyList(),

@@ -93,6 +93,7 @@ public class ProcessDefinitionResource extends BaseProcessDefinitionResource {
 		if (ObjectUtils.isNotEmpty(requestParams.get("startableByUser"))) {
 			processDefinitionQuery.startableByUser(requestParams.get("startableByUser"));
 		}
+
 		if (ObjectUtils.isNotEmpty(requestParams.get("tenantId"))) {
 			processDefinitionQuery.processDefinitionTenantId(requestParams.get("tenantId"));
 		}

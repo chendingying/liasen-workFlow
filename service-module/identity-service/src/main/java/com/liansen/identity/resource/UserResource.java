@@ -122,11 +122,28 @@ public class UserResource extends BaseResource {
             user.setUserName(userRequest.getUserName());
         }
         user.setName(userRequest.getName());
-        user.setAvatar("http://wx.qlogo.cn/mmopen/fsFT5ibPNuBiaZGWzb7yT0yFy0ibaTENudO3LTia7fn4ibSc3mlma5alTpUDw39tx8EuCMrVqjCF9rMicak7H5MQ2tQ7LQTNt6cicv1/0");
-        if(user.getId() == null){
-            user.setPassword(userRequest.getPassword());
-        }
         userRepository.save(user);
+        List<ObjectMap> roles = userRequest.getUserRoles();
+        if(roles != null){
+            userRoleRepository.deleteByUserId(user.getId());
+            for (ObjectMap role : roles) {
+                UserRole userRole = new UserRole();
+                userRole.setRoleId(role.getAsInteger("id"));
+                userRole.setUserId(user.getId());
+                userRoleRepository.save(userRole);
+            }
+        }
+        List<ObjectMap> groups = userRequest.getUserGroups();
+        if(groups != null){
+            userGroupRepository.deleteByUserId(user.getId());
+            for (ObjectMap group : groups) {
+                UserGroup userGroup = new UserGroup();
+                userGroup.setGroupId(group.getAsInteger("id"));
+                userGroup.setUserId(user.getId());
+                userGroupRepository.save(userGroup);
+            }
+        }
+
         return user;
     }
 

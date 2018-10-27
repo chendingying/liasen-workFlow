@@ -14,5 +14,5 @@ import java.util.List;
 @FeignClient(url = "http://localhost:8082",name="engine")
 public interface UserGroupRepository {
     @RequestMapping(value = "/groups/{id}/usersId",method = RequestMethod.GET)
-    public List<Integer> getUserGroup(@PathVariable(value = "id") Integer id);
+    public List<String> getUserGroup(@PathVariable(value = "id") Integer id);
 }

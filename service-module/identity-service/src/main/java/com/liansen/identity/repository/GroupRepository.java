@@ -14,4 +14,6 @@ public interface GroupRepository extends BaseRepository<Group, Integer> {
 	List<Group> findByParentId(int parentId);
 
 	List<Group> findByStatusOrderByOrderAsc(byte status);
+
+	List<Group> findByParentIdNotIn(int parentId);
 }
