@@ -1,5 +1,14 @@
 package com.liansen.common.filter;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import com.liansen.common.utils.DateUtils;
 import com.liansen.common.utils.ObjectUtils;
 import org.slf4j.Logger;
@@ -10,21 +19,15 @@ import org.springframework.util.StreamUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.ContentCachingResponseWrapper;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 
 /**
  * 打印请求过滤器
- * @author cdy
- * @create 2018/9/4
+ *
+ * @author wengwenhui
+ *
  */
 @Component
-@Order(2)
+@Order(1)
 public class RequestLogFilter extends OncePerRequestFilter {
     private Logger logger = LoggerFactory.getLogger(RequestLogFilter.class);
 
@@ -108,4 +111,5 @@ public class RequestLogFilter extends OncePerRequestFilter {
             outputStream.close();
         }
     }
+
 }

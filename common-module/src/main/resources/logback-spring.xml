@@ -2,7 +2,7 @@
 <configuration>
 	<!-- 文件输出格式 -->
 	<property name="PATTERN"
-		value="%-12(%d{yyyy-MM-dd HH:mm:ss.SSS}) [%level] [%thread] %c : %msg%n" />
+			  value="%-12(%d{yyyy-MM-dd HH:mm:ss.SSS}) [%level] [%thread] %c : %msg%n" />
 
 	<!-- log文件路径 -->
 	<property name="LOG_FILE_PATH" value="./log/" />
@@ -22,13 +22,13 @@
 	<logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="trace" additivity="true">
 	</logger>
 
-	<logger name="com.plumdo" level="debug" additivity="true">
+	<logger name="com.liansen" level="debug" additivity="true">
 	</logger>
 
 	<!-- 开发环境 -->
 	<springProfile name="dev">
 		<appender name="rollFile"
-			class="ch.qos.logback.core.rolling.RollingFileAppender">
+				  class="ch.qos.logback.core.rolling.RollingFileAppender">
 			<file>${LOG_FILE_PATH}/${LOG_FILE_NAME}.log</file>
 
 			<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
@@ -39,7 +39,7 @@
 			</rollingPolicy>
 
 			<triggeringPolicy
-				class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+					class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
 				<maxFileSize>10MB</maxFileSize>
 			</triggeringPolicy>
 			<encoder>
@@ -58,7 +58,7 @@
 	<!-- 生产环境 -->
 	<springProfile name="pro">
 		<appender name="rollFile"
-			class="ch.qos.logback.core.rolling.RollingFileAppender">
+				  class="ch.qos.logback.core.rolling.RollingFileAppender">
 			<file>${LOG_FILE_PATH}/info/${LOG_FILE_NAME}.log</file>
 			<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
 				<level>INFO</level>
@@ -71,7 +71,7 @@
 			</rollingPolicy>
 
 			<triggeringPolicy
-				class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+					class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
 				<maxFileSize>10MB</maxFileSize>
 			</triggeringPolicy>
 			<encoder>
@@ -81,7 +81,7 @@
 		</appender>
 
 		<appender name="debugFile"
-			class="ch.qos.logback.core.rolling.RollingFileAppender">
+				  class="ch.qos.logback.core.rolling.RollingFileAppender">
 			<file>${LOG_FILE_PATH}/debug/${LOG_FILE_NAME}.log</file>
 			<filter class="ch.qos.logback.classic.filter.LevelFilter">
 				<level>TRACE</level>
@@ -102,7 +102,7 @@
 			</rollingPolicy>
 
 			<triggeringPolicy
-				class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+					class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
 				<maxFileSize>10MB</maxFileSize>
 			</triggeringPolicy>
 			<encoder>

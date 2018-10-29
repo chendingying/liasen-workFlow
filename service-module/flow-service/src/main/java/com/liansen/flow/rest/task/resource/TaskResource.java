@@ -17,8 +17,16 @@ import com.liansen.flow.rest.task.TaskPaginateList;
 import com.liansen.flow.rest.task.TaskResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.flowable.engine.IdentityService;
+import org.flowable.engine.ManagementService;
 import org.flowable.engine.common.api.query.QueryProperty;
+import org.flowable.engine.impl.transformer.Identity;
+import org.flowable.identitylink.api.IdentityLink;
+import org.flowable.identitylink.service.IdentityLinkService;
+import org.flowable.idm.api.Group;
+import org.flowable.idm.api.User;
 import org.flowable.task.api.Task;
+import org.flowable.task.api.TaskQuery;
 import org.flowable.task.api.history.HistoricTaskInstance;
 import org.flowable.task.api.history.HistoricTaskInstanceQuery;
 import org.flowable.task.service.impl.HistoricTaskInstanceQueryProperty;
@@ -41,8 +49,12 @@ import java.util.Map;
 @RestController
 public class TaskResource extends BaseTaskResource {
 
+
+    @Autowired
+    ManagementService managementService;
     @Autowired
     PhpTaskAndTaskRepository phpTaskAndTaskRepository;
+
 
     @Autowired
     PhpService phpService;
@@ -75,10 +87,6 @@ public class TaskResource extends BaseTaskResource {
         //token失效
         if(tokenUserIdUtils == null || tokenUserIdUtils.tokenUserId() == null){
             exceptionFactory.throwAuthError(CoreConstant.HEADER_TOKEN_NOT_FOUND);
-        }
-
-        if(!tokenUserIdUtils.tokenUserId().equals(TableConstant.ADMIN_USER_ID)){
-            requestParams.put("taskAssignee",tokenUserIdUtils.tokenUserId());
         }
        return getTask(requestParams);
     }
@@ -246,7 +254,6 @@ public class TaskResource extends BaseTaskResource {
             }
             query.taskCandidateGroupIn(groups);
         }
-//        query.unfinished();
         return new TaskPaginateList(restResponseFactory).paginateList(getPageable(requestParams), query, allowedSortProperties);
     }
 }

@@ -168,7 +168,8 @@ public class ProcessInstanceResource extends BaseProcessInstanceResource {
 	public ProcessInstanceStartResponse startProcessInstance(@RequestBody ProcessInstanceStartRequest request) {
 
 		Map<String,Object> completeVariables = new HashMap<String,Object>();
-		ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery().processDefinitionId(request.getProcessDefinitionId()).singleResult();
+		//ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery().processDefinitionId(request.getProcessDefinitionId()).singleResult();
+		//获取所有任务节点信息
 		BpmnModel bpmnModel = repositoryService.getBpmnModel(request.getProcessDefinitionId());
 		Process process = bpmnModel.getProcesses().get(0);
 		Collection<UserTask> flowElements = process.findFlowElementsOfType(UserTask.class);
