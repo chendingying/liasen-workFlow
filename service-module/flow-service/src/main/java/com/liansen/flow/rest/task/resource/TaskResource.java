@@ -6,27 +6,18 @@ import com.liansen.common.resource.PageResponse;
 import com.liansen.common.utils.ObjectUtils;
 import com.liansen.common.utils.TokenUserIdUtils;
 import com.liansen.flow.constant.ErrorConstant;
-import com.liansen.flow.constant.TableConstant;
 import com.liansen.flow.rest.phpClient.PhpService;
-import com.liansen.flow.rest.phpClient.repository.PhpTaskAndTaskRepository;
-import com.liansen.flow.rest.phpClient.repository.PhpTaskRepository;
-import com.liansen.flow.rest.phpClient.request.PhpTaskIdAndTaskId;
+import com.liansen.flow.rest.phpClient.repository.PhpUserTaskRepository;
+import com.liansen.flow.rest.phpClient.request.PhpUserTaskRequest;
 import com.liansen.flow.rest.task.TaskDetailResponse;
 import com.liansen.flow.rest.task.TaskEditRequest;
 import com.liansen.flow.rest.task.TaskPaginateList;
 import com.liansen.flow.rest.task.TaskResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.flowable.engine.IdentityService;
 import org.flowable.engine.ManagementService;
 import org.flowable.engine.common.api.query.QueryProperty;
-import org.flowable.engine.impl.transformer.Identity;
-import org.flowable.identitylink.api.IdentityLink;
-import org.flowable.identitylink.service.IdentityLinkService;
-import org.flowable.idm.api.Group;
-import org.flowable.idm.api.User;
 import org.flowable.task.api.Task;
-import org.flowable.task.api.TaskQuery;
 import org.flowable.task.api.history.HistoricTaskInstance;
 import org.flowable.task.api.history.HistoricTaskInstanceQuery;
 import org.flowable.task.service.impl.HistoricTaskInstanceQueryProperty;
@@ -53,7 +44,7 @@ public class TaskResource extends BaseTaskResource {
     @Autowired
     ManagementService managementService;
     @Autowired
-    PhpTaskAndTaskRepository phpTaskAndTaskRepository;
+    PhpUserTaskRepository phpUserTaskRepository;
 
 
     @Autowired
@@ -87,6 +78,13 @@ public class TaskResource extends BaseTaskResource {
         //token失效
         if(tokenUserIdUtils == null || tokenUserIdUtils.tokenUserId() == null){
             exceptionFactory.throwAuthError(CoreConstant.HEADER_TOKEN_NOT_FOUND);
+        }
+        if(ObjectUtils.isNotEmpty(requestParams.get("tasktype"))){
+            if(requestParams.get("tasktype").equals("taskCandidateUser")){
+                requestParams.put("taskCandidateUser",tokenUserIdUtils.tokenUserId());
+            }if(requestParams.get("tasktype").equals("taskAssignee")){
+                requestParams.put("taskAssignee",tokenUserIdUtils.tokenUserId());
+            }
         }
        return getTask(requestParams);
     }
@@ -128,8 +126,8 @@ public class TaskResource extends BaseTaskResource {
         if (task.getEndTime() == null) {
             exceptionFactory.throwForbidden(ErrorConstant.TASK_RUN_NOT_DELETE, taskId);
         }
-        List<PhpTaskIdAndTaskId> phpTaskIdAndTaskId = phpTaskAndTaskRepository.findByTaskId(taskId);
-        for(PhpTaskIdAndTaskId phpTask:phpTaskIdAndTaskId){
+        List<PhpUserTaskRequest> phpUserTaskRequests = phpUserTaskRepository.findByTaskId(taskId);
+        for(PhpUserTaskRequest phpTask : phpUserTaskRequests){
             if(phpTask != null){
                 try{
                     phpService.deletePhpTask(phpTask.getPhpTaskId());
@@ -138,7 +136,7 @@ public class TaskResource extends BaseTaskResource {
                 }
             }
         }
-        phpTaskAndTaskRepository.deleteByTaskId(taskId);
+        phpUserTaskRepository.deleteByTaskId(taskId);
         historyService.deleteHistoricTaskInstance(task.getId());
         loggerConverter.save("删除了任务 '"+ task.getName() +"'");
     }
@@ -154,6 +152,7 @@ public class TaskResource extends BaseTaskResource {
 
 
     private  PageResponse getTask(@RequestParam Map<String, String> requestParams) {
+
         HistoricTaskInstanceQuery query = historyService.createHistoricTaskInstanceQuery();
 
         if (ObjectUtils.isNotEmpty(requestParams.get("taskId"))) {

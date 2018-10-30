@@ -1,6 +1,7 @@
 package com.liansen.flow.rest.phpClient.repository;
 
 import com.liansen.flow.rest.phpClient.request.PhpTaskRequest;
+import com.liansen.flow.rest.phpClient.request.PhpTaskStatus;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,4 +18,7 @@ public interface PhpTaskRepository {
 
     @RequestMapping(value = "/admin/api/delete/{phpTaskId}",method = RequestMethod.POST)
     public String deletePhpTask(@PathVariable(value="phpTaskId")  String phpTaskId);
+
+    @RequestMapping(value = "/admin/api/modify",method = RequestMethod.POST)
+    public String modify(@RequestBody PhpTaskStatus phpTaskStatus);
 }

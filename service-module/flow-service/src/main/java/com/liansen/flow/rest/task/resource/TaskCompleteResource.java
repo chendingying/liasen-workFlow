@@ -1,12 +1,14 @@
 package com.liansen.flow.rest.task.resource;
 
+import com.liansen.common.constant.CoreConstant;
 import com.liansen.common.model.Authentication;
 import com.liansen.common.model.ExecuteStatus;
+import com.liansen.common.utils.TokenUserIdUtils;
 import com.liansen.flow.constant.ErrorConstant;
 import com.liansen.flow.rest.phpClient.PhpService;
+import com.liansen.flow.rest.phpClient.repository.PhpUserTaskRepository;
 import com.liansen.flow.rest.phpClient.repository.UserGroupRepository;
-import com.liansen.flow.rest.phpClient.request.PhpTaskIdAndTaskId;
-import com.liansen.flow.rest.phpClient.repository.PhpTaskAndTaskRepository;
+import com.liansen.flow.rest.phpClient.request.PhpUserTaskRequest;
 import com.liansen.flow.rest.task.TaskCompleteRequest;
 import com.liansen.flow.rest.task.TaskResponse;
 import com.liansen.flow.rest.variable.RestVariable;
@@ -19,12 +21,8 @@ import org.flowable.engine.IdentityService;
 import org.flowable.engine.ProcessEngine;
 import org.flowable.engine.RepositoryService;
 import org.flowable.engine.RuntimeService;
-import org.flowable.engine.impl.RepositoryServiceImpl;
-import org.flowable.engine.impl.persistence.entity.ExecutionEntity;
-import org.flowable.engine.impl.persistence.entity.ProcessDefinitionEntity;
 import org.flowable.engine.runtime.ProcessInstance;
 import org.flowable.identitylink.api.IdentityLink;
-import org.flowable.identitylink.service.impl.persistence.entity.IdentityLinkEntity;
 import org.flowable.idm.api.User;
 import org.flowable.task.api.DelegationState;
 import org.flowable.task.api.Task;
@@ -60,7 +58,7 @@ public class TaskCompleteResource extends BaseTaskResource {
     PhpService phpService;
 
     @Autowired
-    PhpTaskAndTaskRepository phpTaskAndTaskRepository;
+    PhpUserTaskRepository phpUserTaskRepository;
 
     @Autowired
     UserGroupRepository userGroupRepository;
@@ -122,7 +120,17 @@ public class TaskCompleteResource extends BaseTaskResource {
                             completeVariables.put(userTask.getName(),listCandidateUsers);
                         }
                     }
-                    taskService.complete(taskId,completeVariables);
+                    TokenUserIdUtils tokenUserIdUtils = new TokenUserIdUtils();
+                    System.out.println(tokenUserIdUtils.tokenUserId());
+                    //token失效
+                    if(tokenUserIdUtils == null || tokenUserIdUtils.tokenUserId() == null){
+                        exceptionFactory.throwAuthError(CoreConstant.HEADER_TOKEN_NOT_FOUND);
+                    }
+                    PhpUserTaskRequest phpUserTaskRequest = phpUserTaskRepository.findByUserIdAndTaskId(tokenUserIdUtils.tokenUserId(),taskId);
+                    if(phpUserTaskRequest != null){
+                        phpService.modify(true,phpUserTaskRequest.getPhpTaskId());
+                        taskService.complete(taskId,completeVariables);
+                    }
                 }
             }
         }
@@ -236,14 +244,17 @@ public class TaskCompleteResource extends BaseTaskResource {
             taskResponse.setDueDate(tasks.getDueDate());
             taskResponse.setName(tasks.getName());
             String json =  phpService.phpTaskService(taskResponse);
+
             JSONObject jsonObject = JSONObject.fromObject(json);
             ExecuteStatus status = (ExecuteStatus)JSONObject.toBean(jsonObject, ExecuteStatus.class);
             if(status.getResult() == 0){
-                PhpTaskIdAndTaskId phpTask = new PhpTaskIdAndTaskId();
+                PhpUserTaskRequest phpTask = new PhpUserTaskRequest();
                 phpTask.setTaskId(tasks.getId());
                 phpTask.setPhpTaskId(status.getId());
-                phpTaskAndTaskRepository.save(phpTask);
+                phpTask.setUserId(id);
+                phpUserTaskRepository.save(phpTask);
             }
+
         }
     }
 

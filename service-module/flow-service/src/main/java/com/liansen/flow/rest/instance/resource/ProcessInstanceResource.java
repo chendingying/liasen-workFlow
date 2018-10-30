@@ -10,13 +10,9 @@ import com.liansen.flow.rest.instance.ProcessInstancePaginateList;
 import com.liansen.flow.rest.instance.ProcessInstanceStartRequest;
 import com.liansen.flow.rest.instance.ProcessInstanceStartResponse;
 import com.liansen.flow.rest.phpClient.PhpService;
-import com.liansen.flow.rest.phpClient.controller.PhpTaskController;
-import com.liansen.flow.rest.phpClient.repository.PhpTaskAndTaskRepository;
-import com.liansen.flow.rest.phpClient.repository.PhpTaskRepository;
+import com.liansen.flow.rest.phpClient.repository.PhpUserTaskRepository;
 import com.liansen.flow.rest.phpClient.repository.UserGroupRepository;
-import com.liansen.flow.rest.phpClient.request.PhpTaskIdAndTaskId;
-import com.liansen.flow.rest.phpClient.request.PhpTaskRequest;
-import com.liansen.flow.rest.task.TaskResponse;
+import com.liansen.flow.rest.phpClient.request.PhpUserTaskRequest;
 import com.liansen.flow.rest.task.resource.TaskCompleteResource;
 import com.liansen.flow.rest.variable.RestVariable;
 import io.swagger.annotations.Api;
@@ -25,23 +21,15 @@ import org.flowable.bpmn.model.BpmnModel;
 import org.flowable.bpmn.model.Process;
 import org.flowable.bpmn.model.UserTask;
 import org.flowable.engine.IdentityService;
-import org.flowable.engine.ProcessEngine;
 import org.flowable.engine.RepositoryService;
-import org.flowable.engine.RuntimeService;
 import org.flowable.engine.common.api.query.QueryProperty;
 import org.flowable.engine.history.HistoricProcessInstance;
 import org.flowable.engine.history.HistoricProcessInstanceQuery;
 import org.flowable.engine.impl.HistoricProcessInstanceQueryProperty;
 import org.flowable.engine.impl.persistence.entity.ExecutionEntity;
-import org.flowable.engine.repository.ProcessDefinition;
-import org.flowable.engine.repository.ProcessDefinitionQuery;
 import org.flowable.engine.runtime.ProcessInstance;
-import org.flowable.identitylink.api.IdentityLink;
-import org.flowable.idm.api.User;
-import org.flowable.idm.api.UserQuery;
 import org.flowable.task.api.Task;
 import org.flowable.task.api.history.HistoricTaskInstance;
-import org.flowable.task.api.history.HistoricTaskInstanceQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Propagation;
@@ -70,7 +58,7 @@ public class ProcessInstanceResource extends BaseProcessInstanceResource {
 	TaskCompleteResource taskCompleteResource;
 
 	@Autowired
-	PhpTaskAndTaskRepository phpTaskAndTaskRepository;
+	PhpUserTaskRepository phpUserTaskRepository;
 
 	@Autowired
 	RepositoryService repositoryService;
@@ -273,9 +261,9 @@ public class ProcessInstanceResource extends BaseProcessInstanceResource {
 			List<HistoricTaskInstance> list = historyService.createHistoricTaskInstanceQuery().processInstanceId(processInstanceId).list();
 			for(HistoricTaskInstance historicTaskInstance : list){
 				String taskId = historicTaskInstance.getId();
-				List<PhpTaskIdAndTaskId> phpTaskIdAndTaskIdList = phpTaskAndTaskRepository.findByTaskId(taskId);
-				for(PhpTaskIdAndTaskId phptask : phpTaskIdAndTaskIdList){
-					phpTaskAndTaskRepository.deleteByTaskId(phptask.getTaskId());
+				List<PhpUserTaskRequest> phpUserTaskRequestList = phpUserTaskRepository.findByTaskId(taskId);
+				for(PhpUserTaskRequest phptask : phpUserTaskRequestList){
+					phpUserTaskRepository.deleteByTaskId(phptask.getTaskId());
 					phpService.deletePhpTask(phptask.getPhpTaskId());
 				}
 			}
