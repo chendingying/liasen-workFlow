@@ -15,6 +15,7 @@ public class PhpUserTaskRequest {
     private String taskId;
     private String phpTaskId;
     private String userId;
+    private Boolean isTrigger;
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -52,5 +53,14 @@ public class PhpUserTaskRequest {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    @Column(name = "is_trigger")
+    public Boolean getTrigger() {
+        return isTrigger;
+    }
+
+    public void setTrigger(Boolean trigger) {
+        isTrigger = trigger;
     }
 }

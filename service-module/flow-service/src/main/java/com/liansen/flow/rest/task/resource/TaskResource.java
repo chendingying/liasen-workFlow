@@ -6,6 +6,7 @@ import com.liansen.common.resource.PageResponse;
 import com.liansen.common.utils.ObjectUtils;
 import com.liansen.common.utils.TokenUserIdUtils;
 import com.liansen.flow.constant.ErrorConstant;
+import com.liansen.flow.constant.TableConstant;
 import com.liansen.flow.rest.phpClient.PhpService;
 import com.liansen.flow.rest.phpClient.repository.PhpUserTaskRepository;
 import com.liansen.flow.rest.phpClient.request.PhpUserTaskRequest;
@@ -23,14 +24,15 @@ import org.flowable.task.api.history.HistoricTaskInstanceQuery;
 import org.flowable.task.service.impl.HistoricTaskInstanceQueryProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.Future;
 
 /**
  * @author cdy
@@ -79,7 +81,7 @@ public class TaskResource extends BaseTaskResource {
         if(tokenUserIdUtils == null || tokenUserIdUtils.tokenUserId() == null){
             exceptionFactory.throwAuthError(CoreConstant.HEADER_TOKEN_NOT_FOUND);
         }
-        if(ObjectUtils.isNotEmpty(requestParams.get("tasktype"))){
+        if(ObjectUtils.isNotEmpty(requestParams.get("tasktype")) && !tokenUserIdUtils.tokenUserId().equals(TableConstant.ADMIN_USER_ID) ){
             if(requestParams.get("tasktype").equals("taskCandidateUser")){
                 requestParams.put("taskCandidateUser",tokenUserIdUtils.tokenUserId());
             }if(requestParams.get("tasktype").equals("taskAssignee")){
@@ -255,4 +257,7 @@ public class TaskResource extends BaseTaskResource {
         }
         return new TaskPaginateList(restResponseFactory).paginateList(getPageable(requestParams), query, allowedSortProperties);
     }
+
+
+
 }

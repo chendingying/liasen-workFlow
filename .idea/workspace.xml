@@ -2,21 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="319192c9-6664-4e03-9ae8-28fd86d4534a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/repository/PhpUserTaskRepository.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/request/PhpTaskStatus.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/controller/PhpTaskController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/repository/PhpTaskAndTaskRepository.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskAsync.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/flow-service.log" afterPath="$PROJECT_DIR$/log/flow-service.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/form-service.log" afterPath="$PROJECT_DIR$/log/form-service.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/identity-service.log" afterPath="$PROJECT_DIR$/log/identity-service.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/instance/resource/ProcessInstanceResource.java" afterPath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/instance/resource/ProcessInstanceResource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/PhpService.java" afterPath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/PhpService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/repository/PhpTaskRepository.java" afterPath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/repository/PhpTaskRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/repository/PhpTaskRepositoryHystric.java" afterPath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/repository/PhpTaskRepositoryHystric.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskCompleteResource.java" afterPath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskCompleteResource.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/FlowApplication.java" afterPath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/FlowApplication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/request/PhpUserTaskRequest.java" afterPath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/request/PhpUserTaskRequest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskResource.java" afterPath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskResource.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/request/PhpTaskIdAndTaskId.java" afterPath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/request/PhpUserTaskRequest.java" />
     </list>
     <ignored path="liansen-workFlow.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,8 +40,8 @@
       <file leaf-file-name="TaskResource.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskResource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2500">
-              <caret line="129" column="44" selection-start-line="129" selection-start-column="44" selection-end-line="129" selection-end-column="44" />
+            <state relative-caret-position="2421">
+              <caret line="259" column="0" selection-start-line="259" selection-start-column="0" selection-end-line="259" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -56,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProcessInstanceResource.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/instance/resource/ProcessInstanceResource.java">
+      <file leaf-file-name="TaskAsync.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskAsync.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-91">
-              <caret line="238" column="0" selection-start-line="238" selection-start-column="0" selection-end-line="238" selection-end-column="0" />
+            <state relative-caret-position="744">
+              <caret line="58" column="13" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -68,14 +61,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TaskCompleteResource.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskCompleteResource.java">
+      <file leaf-file-name="FlowApplication.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/FlowApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="180" column="37" selection-start-line="180" selection-start-column="37" selection-end-line="180" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="275">
+              <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -102,9 +93,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/UpdateHiTaskReasonCommand.java" />
-        <option value="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/PhpTask.java" />
-        <option value="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/PhpTaskRepository.java" />
         <option value="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/PhpTaskIdAndTaskId.java" />
         <option value="$PROJECT_DIR$/service-module/pom.xml" />
         <option value="$PROJECT_DIR$/service-module/form-service/src/main/java/com/liansen/form/resource/FormDefinitionResource.java" />
@@ -147,12 +135,15 @@
         <option value="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/repository/PhpTaskAndTaskRepository.java" />
         <option value="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/request/PhpTaskIdAndTaskId.java" />
         <option value="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/repository/PhpUserTaskRepository.java" />
-        <option value="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/request/PhpUserTaskRequest.java" />
         <option value="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/repository/PhpTaskRepositoryHystric.java" />
-        <option value="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskResource.java" />
-        <option value="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/instance/resource/ProcessInstanceResource.java" />
         <option value="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/PhpService.java" />
         <option value="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskCompleteResource.java" />
+        <option value="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/instance/resource/ProcessInstanceResource.java" />
+        <option value="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/TaskAsyncConfig.java" />
+        <option value="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskResource.java" />
+        <option value="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/request/PhpUserTaskRequest.java" />
+        <option value="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/FlowApplication.java" />
+        <option value="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskAsync.java" />
       </list>
     </option>
   </component>
@@ -253,6 +244,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="flow-service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="liansen-workFlow" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="liansen-workFlow" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service-module" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flow-service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="target" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -481,52 +494,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="phpClient" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="liansen-workFlow" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="liansen-workFlow" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service-module" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="flow-service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="flow" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="rest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="phpClient" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="request" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1204,7 +1171,7 @@
       <workItem from="1540777078838" duration="6770000" />
       <workItem from="1540784295448" duration="6949000" />
       <workItem from="1540823852284" duration="654000" />
-      <workItem from="1540862477550" duration="1629000" />
+      <workItem from="1540862477550" duration="11454000" />
     </task>
     <task id="LOCAL-00001" summary="用户组和用户">
       <created>1540267313975</created>
@@ -1234,7 +1201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1540785487088</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="与第三方项目交互">
+      <created>1540864138155</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1540864138155</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1249,7 +1223,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="232262000" />
+    <option name="totallyTimeSpent" value="242087000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1271,9 +1245,9 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13494624" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.57870895" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3635334" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13465665" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.52095133" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19479048" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1286,7 +1260,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46998867" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21630804" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1311,7 +1285,8 @@
     <MESSAGE value="上传到linux上字体问题" />
     <MESSAGE value="支持第一个任务是多人审批的" />
     <MESSAGE value="打印日志" />
-    <option name="LAST_COMMIT_MESSAGE" value="打印日志" />
+    <MESSAGE value="与第三方项目交互" />
+    <option name="LAST_COMMIT_MESSAGE" value="与第三方项目交互" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1332,7 +1307,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="148" />
+      <option name="time" value="150" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
@@ -1346,62 +1321,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://E:/java/repository/org/flowable/flowable-engine/6.3.0/flowable-engine-6.3.0.jar!/org/flowable/engine/impl/TaskServiceImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="159" column="33" selection-start-line="159" selection-start-column="33" selection-end-line="159" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/model/ModelsPaginateList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/java/repository/org/flowable/flowable-engine/6.3.0/flowable-engine-6.3.0.jar!/org/flowable/engine/TaskService.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="97" column="7" selection-start-line="97" selection-start-column="7" selection-end-line="97" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/identity/AiaUserEntityManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/identity/AiaGroupEntityManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-678">
-          <caret line="38" column="90" selection-start-line="38" selection-start-column="90" selection-end-line="38" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/java/repository/org/flowable/flowable-task-service/6.3.0/flowable-task-service-6.3.0.jar!/org/flowable/task/service/impl/TaskQueryImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-179">
-          <caret line="807" column="33" selection-start-line="807" selection-start-column="21" selection-end-line="807" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/java/repository/org/flowable/flowable-task-service-api/6.3.0/flowable-task-service-api-6.3.0.jar!/org/flowable/task/api/history/HistoricTaskInstanceQuery.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="11" column="56" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/java/repository/org/flowable/flowable-task-service/6.3.0/flowable-task-service-6.3.0.jar!/org/flowable/task/service/impl/HistoricTaskInstanceQueryImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="1241" column="37" selection-start-line="1241" selection-start-column="37" selection-end-line="1241" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://E:/java/repository/org/flowable/flowable-task-service/6.3.0/flowable-task-service-6.3.0.jar!/META-INF/maven/org.flowable/flowable-task-service/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-600">
@@ -1500,13 +1419,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://E:/java/repository/org/flowable/flowable-task-service-api/6.3.0/flowable-task-service-api-6.3.0.jar!/org/flowable/task/api/Task.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common-module/src/main/resources/application.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1050">
@@ -1595,13 +1507,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/repository/PhpTaskRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="19" column="50" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/repository/UserGroupHystric.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -1634,50 +1539,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/repository/PhpUserTaskRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/request/PhpUserTaskRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2500">
-          <caret line="129" column="44" selection-start-line="129" selection-start-column="44" selection-end-line="129" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/repository/PhpTaskRepositoryHystric.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="58" selection-start-line="6" selection-start-column="58" selection-end-line="6" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/PhpService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="22" column="61" selection-start-line="22" selection-start-column="61" selection-end-line="22" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/request/PhpTaskRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -1686,20 +1547,151 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskCompleteResource.java">
+    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskVariableResource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="180" column="37" selection-start-line="180" selection-start-column="37" selection-end-line="180" selection-end-column="37" />
+        <state relative-caret-position="145">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskIdentityResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskDelegateResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskClaimResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/instance/resource/ProcessInstanceResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="173" column="78" selection-start-line="173" selection-start-column="78" selection-end-line="173" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/java/repository/org/flowable/flowable-task-service-api/6.3.0/flowable-task-service-api-6.3.0.jar!/org/flowable/task/api/TaskInfo.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="45" column="9" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/java/repository/org/flowable/flowable-task-service-api/6.3.0/flowable-task-service-api-6.3.0.jar!/org/flowable/task/api/Task.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="42" column="26" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/repository/PhpTaskRepositoryHystric.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/instance/resource/ProcessInstanceResource.java">
+    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/repository/PhpUserTaskRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-91">
-          <caret line="238" column="0" selection-start-line="238" selection-start-column="0" selection-end-line="238" selection-end-column="0" />
+        <state relative-caret-position="200">
+          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskCompleteResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="128" column="143" selection-start-line="128" selection-start-column="19" selection-end-line="128" selection-end-column="143" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/request/PhpUserTaskRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="975">
+          <caret line="57" column="32" selection-start-line="57" selection-start-column="32" selection-end-line="57" selection-end-column="32" />
+          <folding>
+            <element signature="e#1344#1345#0" expanded="true" />
+            <element signature="e#1376#1377#0" expanded="true" />
+            <element signature="e#1423#1424#0" expanded="true" />
+            <element signature="e#1458#1459#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/PhpService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/repository/PhpTaskRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/FlowApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/TaskAsyncConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2421">
+          <caret line="259" column="0" selection-start-line="259" selection-start-column="0" selection-end-line="259" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskAsync.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="744">
+          <caret line="58" column="13" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
