@@ -1,7 +1,10 @@
 package com.liansen.flow.cmd;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.liansen.flow.rest.model.CustomBpmnJsonConverter;
+import com.liansen.flow.rest.model.CustomUserTaskJsonConverter;
 import org.flowable.bpmn.converter.BpmnXMLConverter;
 import org.flowable.bpmn.model.BpmnModel;
 import org.flowable.editor.language.json.converter.BpmnJsonConverter;
@@ -46,23 +49,29 @@ public class DeployModelCmd implements Command<Deployment>, Serializable {
         }
 
         try {
-            DeploymentBuilder deploymentBuilder = repositoryService.createDeployment();
-            ObjectNode modelNode = (ObjectNode) new ObjectMapper().readTree(editorSource);
-            BpmnModel bpmnModel = new BpmnJsonConverter().convertToBpmnModel(modelNode);
+            //获取模型
+            Model modelData = repositoryService.getModel(modelId);
+            byte[] bytes = repositoryService.getModelEditorSource(modelData.getId());
+            JsonNode modelNode = new ObjectMapper().readTree(bytes);
+            CustomBpmnJsonConverter.getConvertersToBpmnMap().put("UserTask", CustomUserTaskJsonConverter.class);
+            BpmnJsonConverter jsonConverter = new BpmnJsonConverter();
+            BpmnModel bpmnModel = jsonConverter.convertToBpmnModel(modelNode);
             byte[] bpmnBytes = new BpmnXMLConverter().convertToXML(bpmnModel);
-            String fileName = model.getId() + ".bpmn20.xml";
+
+            DeploymentBuilder deploymentBuilder = repositoryService.createDeployment();
+            String fileName = modelData.getName() + ".bpmn20.xml";
             ByteArrayInputStream bis = new ByteArrayInputStream(bpmnBytes);
             deploymentBuilder.addInputStream(fileName, bis);
             deploymentBuilder.name(fileName);
             // modelId设置为部署的分类字段作为后续关联的需要
-            deploymentBuilder.category(model.getId());
+            deploymentBuilder.category(modelData.getId());
 
-            if (model.getTenantId() != null) {
-                deploymentBuilder.tenantId(model.getTenantId());
+            if (modelData.getTenantId() != null) {
+                deploymentBuilder.tenantId(modelData.getTenantId());
             }
             //部署
             deployment = deploymentBuilder.deploy();
-            model.setDeploymentId(deployment.getId());
+            modelData.setDeploymentId(deployment.getId());
         } catch (Exception e) {
             if (e instanceof FlowableException) {
                 throw (FlowableException) e;

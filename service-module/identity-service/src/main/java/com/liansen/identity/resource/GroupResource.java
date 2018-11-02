@@ -22,6 +22,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -162,5 +163,17 @@ public class GroupResource extends BaseResource {
             }
         }
         groupRepository.delete(group);
+    }
+    @GetMapping(value = "/groups/userId/{userId}")
+    public List<String> findListGroupByUserId(@PathVariable Integer userId){
+        List<Group> groups = groupRepository.findByUserId(userId);
+        if(groups == null || groups.size()==0){
+            return null;
+        }
+        List<String> strings = new ArrayList<>();
+        for(Group group : groups){
+            strings.add(String.valueOf(group.getId()));
+        }
+        return strings;
     }
 }

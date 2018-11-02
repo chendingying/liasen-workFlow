@@ -15,4 +15,7 @@ import java.util.List;
 public interface UserGroupRepository {
     @RequestMapping(value = "/groups/{id}/usersId",method = RequestMethod.GET)
     public List<String> getUserGroup(@PathVariable(value = "id") Integer id);
+
+    @RequestMapping(value = "/groups/userId/{userId}" ,method = RequestMethod.GET)
+    public List<String> getGroupByUserId(@PathVariable(value = "userId") Integer userId1);
 }

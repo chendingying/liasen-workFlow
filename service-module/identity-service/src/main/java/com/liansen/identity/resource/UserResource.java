@@ -57,7 +57,6 @@ public class UserResource extends BaseResource {
         Criteria<User> criteria = new Criteria<User>();
         criteria.add(Restrictions.eq("id", requestParams.get("id")));
         criteria.add(Restrictions.like("phone", requestParams.get("phone")));
-        criteria.add(Restrictions.eq("status", requestParams.get("status")));
         criteria.add(Restrictions.like("name", requestParams.get("name")));
         criteria.add(Restrictions.like("tenantId", requestParams.get("tenantId")));
         return createPageResponse(userRepository.findAll(criteria, getPageable(requestParams)));

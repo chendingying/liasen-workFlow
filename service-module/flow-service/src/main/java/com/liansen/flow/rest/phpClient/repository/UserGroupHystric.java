@@ -14,4 +14,9 @@ public class UserGroupHystric implements UserGroupRepository {
     public List<String> getUserGroup(@PathVariable(value = "id") Integer id) {
         return null;
     }
+
+    @Override
+    public List<String> getGroupByUserId(@PathVariable(value = "userId") Integer userId1) {
+        return null;
+    }
 }

@@ -1,5 +1,7 @@
 package com.liansen.flow.rest.model.resource;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.liansen.common.constant.CoreConstant;
 import com.liansen.common.utils.ObjectUtils;
@@ -7,14 +9,21 @@ import com.liansen.flow.cmd.SaveModelEditorCmd;
 import com.liansen.flow.cmd.UpdateModelKeyCmd;
 import com.liansen.flow.constant.ErrorConstant;
 import com.liansen.flow.constant.TableConstant;
+import com.liansen.flow.rest.model.CustomBpmnJsonConverter;
+import com.liansen.flow.rest.model.CustomUserTaskJsonConverter;
 import com.liansen.flow.rest.model.ModelEditorJsonRequest;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.flowable.bpmn.converter.BpmnXMLConverter;
+import org.flowable.bpmn.model.BpmnModel;
+import org.flowable.editor.language.json.converter.BpmnJsonConverter;
 import org.flowable.engine.repository.Model;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
 
 /**
  * 模型设计器接口
@@ -56,7 +65,14 @@ public class ModelEditorResource extends BaseModelResource {
     @PostMapping(value = "/models/{modelId}/editor", name = "模型设计器保存模型")
     @ResponseStatus(value = HttpStatus.OK)
     @Transactional(propagation = Propagation.REQUIRED)
-    public void saveModelEditor(@PathVariable String modelId, @RequestBody ModelEditorJsonRequest values) {
+    public void saveModelEditor(@PathVariable String modelId, @RequestBody ModelEditorJsonRequest values) throws IOException {
+
+
+
+
+
+
+
         Model model = getModel(modelId, values.isNewVersion());
         if(!model.getKey().equals(values.getKey())) {
             checkModelKeyExists(values.getKey());

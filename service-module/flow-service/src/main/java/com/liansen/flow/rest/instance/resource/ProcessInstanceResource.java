@@ -13,6 +13,7 @@ import com.liansen.flow.rest.phpClient.PhpService;
 import com.liansen.flow.rest.phpClient.repository.PhpUserTaskRepository;
 import com.liansen.flow.rest.phpClient.repository.UserGroupRepository;
 import com.liansen.flow.rest.phpClient.request.PhpUserTaskRequest;
+import com.liansen.flow.rest.readTask.TaskReadService;
 import com.liansen.flow.rest.task.resource.TaskCompleteResource;
 import com.liansen.flow.rest.variable.RestVariable;
 import io.swagger.annotations.Api;
@@ -65,6 +66,9 @@ public class ProcessInstanceResource extends BaseProcessInstanceResource {
 
 	@Autowired
 	UserGroupRepository userGroupRepository;
+
+	@Autowired
+	TaskReadService taskReadService;
 	private static Map<String, QueryProperty> allowedSortProperties = new HashMap<String, QueryProperty>();
 
 	static {
@@ -237,6 +241,8 @@ public class ProcessInstanceResource extends BaseProcessInstanceResource {
 		}
 		//创建任务
 		List<Task> tasks = taskService.createTaskQuery().processInstanceId(instance.getProcessInstanceId()).list();
+		//处理 可阅人
+		taskReadService.taskRead(flowElements,tasks);
 		taskCompleteResource.PhpServiceForTask(tasks);
 		return restResponseFactory.createProcessInstanceStartResponse(instance, tasks);
 	}
