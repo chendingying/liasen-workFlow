@@ -16,4 +16,7 @@ public interface TaskRepository extends BaseRepository<HistoricTaskDoMain, Integ
             " UNION" +
             " select * from ACT_HI_TASKINST where 1=1 limit ?1",nativeQuery = true)
     List<HistoricTaskDoMain> queryHistoricTaskInstance();
+
+    @Query(value = "select * from ACT_HI_TASKINST where PROC_INST_ID_ = ?1",nativeQuery = true)
+    List<HistoricTaskDoMain> queryHistoricTaskInstanceByProcessInstanceId(String processInstanceId);
 }

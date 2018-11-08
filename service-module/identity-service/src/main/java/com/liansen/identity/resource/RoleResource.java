@@ -103,8 +103,19 @@ public class RoleResource extends BaseResource {
             role = new Role();
         }
         role.setName(roleRequest.getName());
+        role.setStatus(roleRequest.getStatus());
+        role.setRemark(roleRequest.getRemark());
+        role.setTenantId(roleRequest.getTenantId());
         roleRepository.save(role);
 
+        roleMenuRepository.deleteByRoleId(role.getId());
+        List<ObjectMap> menus = roleRequest.getRoleMenus();
+        for (ObjectMap menu : menus) {
+            RoleMenu roleMenu = new RoleMenu();
+            roleMenu.setMenuId(menu.getAsInteger("id"));
+            roleMenu.setRoleId(role.getId());
+            roleMenuRepository.save(roleMenu);
+        }
         return role;
     }
 

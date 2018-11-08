@@ -2,11 +2,10 @@ package com.liansen.identity.domain;
 
 
 import com.liansen.common.domain.BaseEntity;
+import com.liansen.common.model.ObjectMap;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * The persistent class for the pw_id_role database table.
@@ -20,6 +19,8 @@ public class Role extends BaseEntity {
 	private String name;
 	private byte status;
 	private String remark;
+
+	private List<ObjectMap> roleMenus;
 
 	public Role() {
 	}
@@ -51,4 +52,12 @@ public class Role extends BaseEntity {
 		this.remark = remark;
 	}
 
+	@Transient
+	public List<ObjectMap> getRoleMenus() {
+		return roleMenus;
+	}
+
+	public void setRoleMenus(List<ObjectMap> roleMenus) {
+		this.roleMenus = roleMenus;
+	}
 }

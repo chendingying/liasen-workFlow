@@ -63,6 +63,8 @@ public class FormRunByteArrayResource  extends BaseResource {
             ByteArray byteArray = null;
             if (ObjectUtils.isNotEmpty(requestParams.get("formKey"))) {
                 formDefinition = formDefinitionRepository.findByKey(requestParams.get("formKey"));
+            }
+            if(formDefinition != null){
                 byteArray = byteArrayRepository.findOne(formDefinition.getDeploySourceId());
             }
             if (byteArray == null) {

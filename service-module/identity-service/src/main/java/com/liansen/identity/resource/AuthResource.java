@@ -69,6 +69,16 @@ public  class AuthResource extends BaseResource {
         return ConvertFactory.convertUseAuth(user, token);
     }
 
+    @GetMapping(value = "/auths/token/{account}")
+    @ResponseStatus(HttpStatus.OK)
+    @NotAuth
+    public ObjectMap token(@PathVariable(name = "account") String account){
+        User user = userRepository.findByUserName(account);
+        String token = Jwts.builder().setSubject(account).setId(user.getId().toString()).setIssuedAt(DateUtils.currentTimestamp())
+                .setExpiration(new Date(DateUtils.currentTimeMillis() + CoreConstant.LOGIN_USER_EXPIRE_IN)).signWith(SignatureAlgorithm.HS256, CoreConstant.JWT_SECRET).compact();
+        return ConvertFactory.convertUseAuth(user, token);
+    }
+
     @ApiOperation(value = "根据用户Id查询权限菜单" , httpMethod = "GET")
     @GetMapping("/auths/menus")
     @ResponseStatus(HttpStatus.OK)

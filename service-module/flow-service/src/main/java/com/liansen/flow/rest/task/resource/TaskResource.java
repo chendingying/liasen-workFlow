@@ -127,6 +127,7 @@ public class TaskResource extends BaseTaskResource {
             }
             sql += ")";
         }
+        sql +="order by " + requestParams.get("sortName")+" " + requestParams.get("sortOrder") ;
 
        return   pageService.queryByPageForMySQL(sql,null,Integer.valueOf(requestParams.get("pageNum")),Integer.valueOf(requestParams.get("pageSize")),null);
 

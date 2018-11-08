@@ -14,6 +14,8 @@ import com.liansen.flow.rest.phpClient.repository.PhpUserTaskRepository;
 import com.liansen.flow.rest.phpClient.repository.UserGroupRepository;
 import com.liansen.flow.rest.phpClient.request.PhpUserTaskRequest;
 import com.liansen.flow.rest.readTask.TaskReadService;
+import com.liansen.flow.rest.task.domain.HistoricTaskDoMain;
+import com.liansen.flow.rest.task.repository.TaskRepository;
 import com.liansen.flow.rest.task.resource.TaskCompleteResource;
 import com.liansen.flow.rest.variable.RestVariable;
 import io.swagger.annotations.Api;
@@ -69,6 +71,9 @@ public class ProcessInstanceResource extends BaseProcessInstanceResource {
 
 	@Autowired
 	TaskReadService taskReadService;
+
+	@Autowired
+	TaskRepository taskRepository;
 	private static Map<String, QueryProperty> allowedSortProperties = new HashMap<String, QueryProperty>();
 
 	static {
@@ -254,6 +259,15 @@ public class ProcessInstanceResource extends BaseProcessInstanceResource {
 	public void deleteProcessInstance(@PathVariable String processInstanceId, @RequestParam(value = "deleteReason", required = false) String deleteReason, @RequestParam(value = "cascade", required = false) boolean cascade) {
 		HistoricProcessInstance historicProcessInstance = getHistoricProcessInstanceFromRequest(processInstanceId);
 		if (historicProcessInstance.getEndTime() != null) {
+
+			List<HistoricTaskDoMain> historicTaskDoMains = taskRepository.queryHistoricTaskInstanceByProcessInstanceId(historicProcessInstance.getId());
+			for(HistoricTaskDoMain main: historicTaskDoMains){
+				List<PhpUserTaskRequest> phpUserTaskRequestList = phpUserTaskRepository.findByTaskId(main.getId());
+				for(PhpUserTaskRequest phptask : phpUserTaskRequestList){
+					phpUserTaskRepository.deleteByTaskId(phptask.getTaskId());
+					phpService.deletePhpTask(phptask.getPhpTaskId());
+				}
+			}
 			historyService.deleteHistoricProcessInstance(historicProcessInstance.getId());
 			return;
 		}
@@ -274,17 +288,11 @@ public class ProcessInstanceResource extends BaseProcessInstanceResource {
 				}
 			}
 			historyService.deleteHistoricProcessInstance(processInstanceId);
+		}else{
+
 		}
 
 		loggerConverter.save("删除了流程实例 '" +historicProcessInstance.getProcessDefinitionName()+ "'");
-	}
-
-	@Test
-	public void setVariableValues(){
-
-		String executionId="90001";
-		runtimeService.setVariable(executionId, "days", 2);
-		runtimeService.getVariable(executionId,"days");
 	}
 
 }

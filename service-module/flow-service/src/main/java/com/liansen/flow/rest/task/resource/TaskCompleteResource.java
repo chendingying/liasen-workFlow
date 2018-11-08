@@ -101,6 +101,7 @@ public class TaskCompleteResource extends BaseTaskResource {
                     List<Task> taskList = findTaskListByKey(findProcessInstanceByTaskId(
                             taskId).getId(), findTaskById(taskId).getTaskDefinitionKey());
                     for (Task t : taskList) {
+                        phpService.modify(true,null,t.getId());
                         taskService.complete(t.getId(),completeVariables);
                     }
                 }else{
@@ -121,14 +122,13 @@ public class TaskCompleteResource extends BaseTaskResource {
                         }
                     }
                     TokenUserIdUtils tokenUserIdUtils = new TokenUserIdUtils();
-                    System.out.println(tokenUserIdUtils.tokenUserId());
                     //token失效
                     if(tokenUserIdUtils == null || tokenUserIdUtils.tokenUserId() == null){
                         exceptionFactory.throwAuthError(CoreConstant.HEADER_TOKEN_NOT_FOUND);
                     }
                     PhpUserTaskRequest phpUserTaskRequest = phpUserTaskRepository.findByUserIdAndTaskId(tokenUserIdUtils.tokenUserId(),taskId);
                     if(phpUserTaskRequest != null){
-                        phpService.modify(true,phpUserTaskRequest.getPhpTaskId());
+                        phpService.modify(true,phpUserTaskRequest.getPhpTaskId(),taskId);
                         taskService.complete(taskId,completeVariables);
                     }
                 }
@@ -243,6 +243,7 @@ public class TaskCompleteResource extends BaseTaskResource {
             taskResponse.setId(tasks.getId());
             taskResponse.setDueDate(tasks.getDueDate());
             taskResponse.setName(tasks.getName());
+            taskResponse.setUserId(user.getId());
             String json =  phpService.phpTaskService(taskResponse);
 
             JSONObject jsonObject = JSONObject.fromObject(json);

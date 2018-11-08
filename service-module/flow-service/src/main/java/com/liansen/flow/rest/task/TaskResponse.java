@@ -26,6 +26,7 @@ public class TaskResponse {
 	protected String processDefinitionKey;
 	protected Integer processDefinitionVersion;
 	protected String processInstanceId;
+	protected String userId;
 	
 
 	public boolean isSuspended() {
@@ -200,5 +201,11 @@ public class TaskResponse {
 	    return result;
 	}
 
+	public String getUserId() {
+		return userId;
+	}
 
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 }
