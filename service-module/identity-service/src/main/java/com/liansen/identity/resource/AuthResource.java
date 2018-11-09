@@ -1,5 +1,6 @@
 package com.liansen.identity.resource;
 
+import com.alibaba.fastjson.JSONObject;
 import com.liansen.common.annotation.NotAuth;
 import com.liansen.common.constant.CoreConstant;
 import com.liansen.common.model.ObjectMap;
@@ -8,23 +9,30 @@ import com.liansen.common.utils.DateUtils;
 import com.liansen.identity.constant.ErrorConstant;
 import com.liansen.identity.constant.TableConstant;
 import com.liansen.identity.domain.Menu;
+import com.liansen.identity.domain.Session;
 import com.liansen.identity.domain.User;
 import com.liansen.identity.domain.UserPassword;
 import com.liansen.identity.repository.MenuRepository;
 import com.liansen.identity.repository.UserRepository;
+import com.liansen.identity.request.JedisClient;
 import com.liansen.identity.response.ConvertFactory;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
-import java.util.Date;
-import java.util.List;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.*;
 
 /**
  * 授权控制类
@@ -41,6 +49,8 @@ public  class AuthResource extends BaseResource {
     @Autowired
     private MenuRepository menuRepository;
 
+    @Autowired
+    JedisClient jedisClient;
 
     /**
      * 登录系统
@@ -69,16 +79,51 @@ public  class AuthResource extends BaseResource {
         return ConvertFactory.convertUseAuth(user, token);
     }
 
-    @GetMapping(value = "/auths/token/{account}")
-    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/auth/user/{username}")
     @NotAuth
-    public ObjectMap token(@PathVariable(name = "account") String account){
-        User user = userRepository.findByUserName(account);
-        String token = Jwts.builder().setSubject(account).setId(user.getId().toString()).setIssuedAt(DateUtils.currentTimestamp())
+    public ObjectMap UseAuth(@PathVariable(name = "username")String userName,HttpServletRequest request){
+
+        if(jedisClient.get("laravel_session") != null){
+            Cookie cookie1 = new Cookie("laravel_session",jedisClient.get("laravel_session"));
+            Cookie cookie2 = new Cookie("XSRF-TOKEN",jedisClient.get("XSRF-TOKEN"));
+            System.out.println(cookie1);
+        }
+        User user =  new User();
+        System.out.println(jedisClient.get("REDIS_USER_SESSION:"+userName));
+        if(jedisClient.get("REDIS_USER_SESSION:"+userName) != null){
+             user = JSONObject.parseObject(jedisClient.get("REDIS_USER_SESSION:"+userName),User.class);
+        }
+        String token = Jwts.builder().setSubject(userName).setId(user.getId().toString()).setIssuedAt(DateUtils.currentTimestamp())
                 .setExpiration(new Date(DateUtils.currentTimeMillis() + CoreConstant.LOGIN_USER_EXPIRE_IN)).signWith(SignatureAlgorithm.HS256, CoreConstant.JWT_SECRET).compact();
-        return ConvertFactory.convertUseAuth(user, token);
+        return ConvertFactory.convertUseAuth(user,token);
     }
 
+    @GetMapping("auth/cookies")
+    public List<Cookie> cookies(){
+        List<Cookie> cookies = new ArrayList<>();
+        if(jedisClient.get("laravel_session") != null){
+            Cookie cookie1 = new Cookie("laravel_session",jedisClient.get("laravel_session"));
+            Cookie cookie2 = new Cookie("XSRF-TOKEN",jedisClient.get("XSRF-TOKEN"));
+            cookies.add(cookie1);
+            cookies.add(cookie2);
+        }
+        return cookies;
+    }
+
+    @ApiIgnore
+    @ApiOperation(value = "PHP登录系统" , httpMethod = "POST")
+    @PostMapping("/auths/php/login/{account}")
+    @ResponseStatus(HttpStatus.OK)
+    @NotAuth
+    public void phpLogin(@PathVariable(name = "account") String account,String laravel_session){
+        User user = userRepository.findByUserName(account);
+        jedisClient.set("REDIS_USER_SESSION:"+account, JSONObject.toJSONString(user));
+        //设置session过期时间
+        jedisClient.expire("REDIS_USER_SESSION:"+account, 60 * 30);
+        System.out.println(jedisClient.get("REDIS_USER_SESSION:"+account));
+    }
+
+    @NotAuth
     @ApiOperation(value = "根据用户Id查询权限菜单" , httpMethod = "GET")
     @GetMapping("/auths/menus")
     @ResponseStatus(HttpStatus.OK)
@@ -87,6 +132,7 @@ public  class AuthResource extends BaseResource {
         List<Menu> parentMenus = menuRepository.findByTypeAndStatusOrderByOrderAsc(TableConstant.MENU_TYPE_PARENT, TableConstant.MENU_STATUS_NORMAL);
         return ConvertFactory.convertUserMenus(parentMenus, childMenus);
     }
+
 
     /**
      * 修改密码
@@ -128,4 +174,5 @@ public  class AuthResource extends BaseResource {
         else
             System.out.println("It does not match");
     }
+
 }

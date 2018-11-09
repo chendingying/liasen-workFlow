@@ -65,6 +65,10 @@ public class TaskResource extends BaseTaskResource {
     @Autowired
     UserGroupRepository userGroupRepository;
 
+    @Autowired
+    TaskAsync taskAsync;
+
+
     private static Map<String, QueryProperty> allowedSortProperties = new HashMap<String, QueryProperty>();
 
     static {
@@ -86,59 +90,59 @@ public class TaskResource extends BaseTaskResource {
         allowedSortProperties.put("startTime", HistoricTaskInstanceQueryProperty.START);
     }
 
+
     @ApiOperation("任务查询")
     //单人任务(负责人)
     @GetMapping(value = "/tasks", name = "单人任务查询")
     public PageList getTasks(@ApiIgnore @RequestParam Map<String, String> requestParams) {
+        List<Task> tasks = taskService.createTaskQuery().list();
+        taskAsync.TaskAsync(tasks);
         TokenUserIdUtils tokenUserIdUtils = new TokenUserIdUtils();
        // token失效
         if(tokenUserIdUtils == null || tokenUserIdUtils.tokenUserId() == null || tokenUserIdUtils.tokenUserId().equals("")){
             exceptionFactory.throwAuthError(CoreConstant.HEADER_TOKEN_NOT_FOUND);
         }
 
-        String sqlParams ="ID_ as id,PROC_DEF_ID_ as processDefinitionId,TASK_DEF_ID_ as taskDefinitionId,TASK_DEF_KEY_ as taskDefinitionKey,PROC_INST_ID_ as processInstanceId,EXECUTION_ID_ as executionId,NAME_ as `name`," +
-                "PARENT_TASK_ID_ as parentTaskId,DESCRIPTION_ as description,OWNER_ as `owner`,ASSIGNEE_ as assignee,START_TIME_ as startTime,CLAIM_TIME_ as claimTime,END_TIME_ as endTime,DURATION_ as durationInMillis,PRIORITY_ as priority,DUE_DATE_ as dueDate, FORM_KEY_ as formKey ,CATEGORY_ as category ,TENANT_ID_ as tenantId";
-        String sql = "select " + sqlParams+ ",`PROC_DEF_ID_` as `status`"+
-                " from ACT_HI_TASKINST hi where hi.PROC_DEF_ID_ in(select r.process_definition_id from act_read_task r where r.user_id = "+tokenUserIdUtils.tokenUserId()+" ) " +
-                "UNION " +
-                "select "+sqlParams+",TENANT_ID_ as `status` "+" from ACT_HI_TASKINST";
-        if(!tokenUserIdUtils.tokenUserId().equals(TableConstant.ADMIN_USER_ID)){
-            sql += " where ASSIGNEE_ = " + tokenUserIdUtils.tokenUserId();
-        }
-        sql += " UNION select t.ID_ as id,t.PROC_DEF_ID_ as processDefinitionId,t.TASK_DEF_ID_ as taskDefinitionId,t.TASK_DEF_KEY_ as taskDefinitionKey,t.PROC_INST_ID_ as processInstanceId,t.EXECUTION_ID_ as executionId,t.NAME_ as `name`," +
-                " t.PARENT_TASK_ID_ as parentTaskId,t.DESCRIPTION_ as description,t.OWNER_ as `owner`,t.ASSIGNEE_ as assignee,t.START_TIME_ as startTime,t.CLAIM_TIME_ as claimTime,t.END_TIME_ as endTime,t.DURATION_ as durationInMillis,t.PRIORITY_ as priority,t.DUE_DATE_ as dueDate, t.FORM_KEY_ as formKey ,t.CATEGORY_ as category ,t.TENANT_ID_ as tenantId ," +
-                " t.TENANT_ID_ as `status` from ACT_HI_TASKINST t " +
-                " inner join ACT_HI_IDENTITYLINK HI" +
-                " on HI.TASK_ID_ = t.ID_";
+       if(tokenUserIdUtils.tokenUserId().equals(TableConstant.ADMIN_USER_ID)){
+           String sqlParams ="ID_ as id,PROC_DEF_ID_ as processDefinitionId,TASK_DEF_ID_ as taskDefinitionId,TASK_DEF_KEY_ as taskDefinitionKey,PROC_INST_ID_ as processInstanceId,EXECUTION_ID_ as executionId,NAME_ as `name`," +
+                   "PARENT_TASK_ID_ as parentTaskId,DESCRIPTION_ as description,OWNER_ as `owner`,ASSIGNEE_ as assignee,START_TIME_ as startTime,CLAIM_TIME_ as claimTime,END_TIME_ as endTime,DURATION_ as durationInMillis,PRIORITY_ as priority,DUE_DATE_ as dueDate, FORM_KEY_ as formKey ,CATEGORY_ as category ,TENANT_ID_ as tenantId";
+           String sql = "select "+sqlParams+" from ACT_HI_TASKINST";
+           return  pageService.queryByPageForMySQL(sql,null,Integer.valueOf(requestParams.get("pageNum")),Integer.valueOf(requestParams.get("pageSize")),null);
+       }else{
+           String sqlParams ="ID_ as id,PROC_DEF_ID_ as processDefinitionId,TASK_DEF_ID_ as taskDefinitionId,TASK_DEF_KEY_ as taskDefinitionKey,PROC_INST_ID_ as processInstanceId,EXECUTION_ID_ as executionId,NAME_ as `name`," +
+                   "PARENT_TASK_ID_ as parentTaskId,DESCRIPTION_ as description,OWNER_ as `owner`,ASSIGNEE_ as assignee,START_TIME_ as startTime,CLAIM_TIME_ as claimTime,END_TIME_ as endTime,DURATION_ as durationInMillis,PRIORITY_ as priority,DUE_DATE_ as dueDate, FORM_KEY_ as formKey ,CATEGORY_ as category ,TENANT_ID_ as tenantId";
+           String sql = "select " + sqlParams+ ",`PROC_DEF_ID_` as `status`"+
+                   " from ACT_HI_TASKINST hi where hi.PROC_DEF_ID_ in(select r.process_definition_id from act_read_task r where r.user_id = "+tokenUserIdUtils.tokenUserId()+" ) " +
+                   "UNION " +
+                   "select "+sqlParams+",TENANT_ID_ as `status` "+" from ACT_HI_TASKINST";
+           if(!tokenUserIdUtils.tokenUserId().equals(TableConstant.ADMIN_USER_ID)){
+               sql += " where ASSIGNEE_ = " + tokenUserIdUtils.tokenUserId();
+           }
+           sql += " UNION select t.ID_ as id,t.PROC_DEF_ID_ as processDefinitionId,t.TASK_DEF_ID_ as taskDefinitionId,t.TASK_DEF_KEY_ as taskDefinitionKey,t.PROC_INST_ID_ as processInstanceId,t.EXECUTION_ID_ as executionId,t.NAME_ as `name`," +
+                   " t.PARENT_TASK_ID_ as parentTaskId,t.DESCRIPTION_ as description,t.OWNER_ as `owner`,t.ASSIGNEE_ as assignee,t.START_TIME_ as startTime,t.CLAIM_TIME_ as claimTime,t.END_TIME_ as endTime,t.DURATION_ as durationInMillis,t.PRIORITY_ as priority,t.DUE_DATE_ as dueDate, t.FORM_KEY_ as formKey ,t.CATEGORY_ as category ,t.TENANT_ID_ as tenantId ," +
+                   " t.TENANT_ID_ as `status` from ACT_HI_TASKINST t " +
+                   " inner join ACT_HI_IDENTITYLINK HI" +
+                   " on HI.TASK_ID_ = t.ID_";
 
-        if(!tokenUserIdUtils.tokenUserId().equals(TableConstant.ADMIN_USER_ID)){
-            List<String> strings = new ArrayList<>();
-            strings =  userGroupRepository.getGroupByUserId(Integer.valueOf(tokenUserIdUtils.tokenUserId()));
-            String groupIds = "";
-            if(strings != null && strings.size() > 0 ){
-                groupIds = strings.get(0);
-                for(int i =1;i < strings.size();i++){
-                    groupIds += ","+ strings.get(i);
-                }
-            }
-           sql += " where t.ASSIGNEE_ is null and HI.TYPE_ = 'candidate' and (HI.USER_ID_ = "+tokenUserIdUtils.tokenUserId();
-            if(strings != null){
-                sql +=" or  HI.GROUP_ID_ IN("+groupIds+")";
-            }
-            sql += ")";
-        }
-        sql +="order by " + requestParams.get("sortName")+" " + requestParams.get("sortOrder") ;
-
-       return   pageService.queryByPageForMySQL(sql,null,Integer.valueOf(requestParams.get("pageNum")),Integer.valueOf(requestParams.get("pageSize")),null);
-
-//        if(ObjectUtils.isNotEmpty(requestParams.get("tasktype")) && !tokenUserIdUtils.tokenUserId().equals(TableConstant.ADMIN_USER_ID) ){
-//            if(requestParams.get("tasktype").equals("taskCandidateUser")){
-//                requestParams.put("taskCandidateUser",tokenUserIdUtils.tokenUserId());
-//            }if(requestParams.get("tasktype").equals("taskAssignee")){
-//                requestParams.put("taskAssignee",tokenUserIdUtils.tokenUserId());
-//            }
-//        }
-//       return getTask(requestParams);
+           if(!tokenUserIdUtils.tokenUserId().equals(TableConstant.ADMIN_USER_ID)){
+               List<String> strings = new ArrayList<>();
+               strings =  userGroupRepository.getGroupByUserId(Integer.valueOf(tokenUserIdUtils.tokenUserId()));
+               String groupIds = "";
+               if(strings != null && strings.size() > 0 ){
+                   groupIds = strings.get(0);
+                   for(int i =1;i < strings.size();i++){
+                       groupIds += ","+ strings.get(i);
+                   }
+               }
+               sql += " where t.ASSIGNEE_ is null and HI.TYPE_ = 'candidate' and (HI.USER_ID_ = "+tokenUserIdUtils.tokenUserId();
+               if(strings != null){
+                   sql +=" or  HI.GROUP_ID_ IN("+groupIds+")";
+               }
+               sql += ")";
+           }
+           sql +="order by " + requestParams.get("sortName")+" " + requestParams.get("sortOrder") ;
+           return  pageService.queryByPageForMySQL(sql,null,Integer.valueOf(requestParams.get("pageNum")),Integer.valueOf(requestParams.get("pageSize")),null);
+       }
     }
 
     @ApiOperation("根据任务ID查询")
@@ -308,6 +312,23 @@ public class TaskResource extends BaseTaskResource {
         return new TaskPaginateList(restResponseFactory).paginateList(getPageable(requestParams), query, allowedSortProperties);
     }
 
-
-
+//
+//    @ApiOperation("任务查询")
+//    //单人任务(负责人)
+//    @GetMapping(value = "/tasks", name = "单人任务查询")
+//    public PageResponse get(@ApiIgnore @RequestParam Map<String, String> requestParams) {
+//        TokenUserIdUtils tokenUserIdUtils = new TokenUserIdUtils();
+//        //token失效
+//        if(tokenUserIdUtils == null || tokenUserIdUtils.tokenUserId() == null){
+//            exceptionFactory.throwAuthError(CoreConstant.HEADER_TOKEN_NOT_FOUND);
+//        }
+//        if(ObjectUtils.isNotEmpty(requestParams.get("tasktype")) && !tokenUserIdUtils.tokenUserId().equals(TableConstant.ADMIN_USER_ID) ){
+//            if(requestParams.get("tasktype").equals("taskCandidateUser")){
+//                requestParams.put("taskCandidateUser",tokenUserIdUtils.tokenUserId());
+//            }if(requestParams.get("tasktype").equals("taskAssignee")){
+//                requestParams.put("taskAssignee",tokenUserIdUtils.tokenUserId());
+//            }
+//        }
+//        return getTask(requestParams);
+//    }
 }

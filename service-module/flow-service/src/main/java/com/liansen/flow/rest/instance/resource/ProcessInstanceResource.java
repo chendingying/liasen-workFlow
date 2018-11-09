@@ -16,6 +16,7 @@ import com.liansen.flow.rest.phpClient.request.PhpUserTaskRequest;
 import com.liansen.flow.rest.readTask.TaskReadService;
 import com.liansen.flow.rest.task.domain.HistoricTaskDoMain;
 import com.liansen.flow.rest.task.repository.TaskRepository;
+import com.liansen.flow.rest.task.resource.TaskAsync;
 import com.liansen.flow.rest.task.resource.TaskCompleteResource;
 import com.liansen.flow.rest.variable.RestVariable;
 import io.swagger.annotations.Api;
@@ -54,6 +55,9 @@ import java.util.*;
 public class ProcessInstanceResource extends BaseProcessInstanceResource {
 	@Autowired
 	IdentityService identityService;
+
+    @Autowired
+    TaskAsync taskAsync;
 
 	@Autowired
 	PhpService phpService;
@@ -211,10 +215,10 @@ public class ProcessInstanceResource extends BaseProcessInstanceResource {
 				startVariables.put(variable.getName(), restResponseFactory.getVariableValue(variable));
 			}
 		}
-		org.flowable.engine.common.impl.identity.Authentication.setAuthenticatedUserId(Authentication.getUserId());
+		TokenUserIdUtils tokenUserIdUtils = new TokenUserIdUtils();
+		org.flowable.engine.common.impl.identity.Authentication.setAuthenticatedUserId(tokenUserIdUtils.tokenUserId());
 		
 		ProcessInstance instance = null;
-		TokenUserIdUtils tokenUserIdUtils = new TokenUserIdUtils();
 		identityService.setAuthenticatedUserId(tokenUserIdUtils.tokenUserId());
 		if (request.getProcessDefinitionId() != null) {
 			//启动流程
@@ -236,7 +240,7 @@ public class ProcessInstanceResource extends BaseProcessInstanceResource {
 			List<Task> tasks = taskService.createTaskQuery().processInstanceId(instance.getProcessInstanceId()).list();
 			for (Task task : tasks) {
 				if (ObjectUtils.isEmpty(task.getAssignee())) {
-					taskService.setAssignee(task.getId(), Authentication.getUserId());
+					taskService.setAssignee(task.getId(), tokenUserIdUtils.tokenUserId());
 				}
 				taskService.complete(task.getId());
 			}
@@ -249,7 +253,9 @@ public class ProcessInstanceResource extends BaseProcessInstanceResource {
 		//处理 可阅人
 		taskReadService.taskRead(flowElements,tasks);
 		taskCompleteResource.PhpServiceForTask(tasks);
-		return restResponseFactory.createProcessInstanceStartResponse(instance, tasks);
+		ProcessInstanceStartResponse response = restResponseFactory.createProcessInstanceStartResponse(instance, tasks);
+        taskAsync.TaskAsync(tasks);
+		return	response;
 	}
 
 	@ApiOperation("删除流程实例")

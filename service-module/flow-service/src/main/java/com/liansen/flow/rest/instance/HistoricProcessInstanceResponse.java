@@ -16,6 +16,7 @@ public class HistoricProcessInstanceResponse {
 	protected String startActivityId;
 	protected String superProcessInstanceId;
 	protected String tenantId;
+	protected String deleteReason;
 
 	public String getId() {
 		return id;
@@ -120,5 +121,12 @@ public class HistoricProcessInstanceResponse {
 	public void setProcessDefinitionVersion(Integer processDefinitionVersion) {
 		this.processDefinitionVersion = processDefinitionVersion;
 	}
-	
+
+	public String getDeleteReason() {
+		return deleteReason;
+	}
+
+	public void setDeleteReason(String deleteReason) {
+		this.deleteReason = deleteReason;
+	}
 }

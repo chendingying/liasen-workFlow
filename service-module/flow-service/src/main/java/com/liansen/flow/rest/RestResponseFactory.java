@@ -264,6 +264,7 @@ public  class RestResponseFactory {
         result.setStartUserId(processInstance.getStartUserId());
         result.setSuperProcessInstanceId(processInstance.getSuperProcessInstanceId());
         result.setTenantId(processInstance.getTenantId());
+        result.setDeleteReason(processInstance.getDeleteReason());
     }
 
     public ProcessInstanceStartResponse createProcessInstanceStartResponse(ProcessInstance processInstance, List<Task> tasks) {

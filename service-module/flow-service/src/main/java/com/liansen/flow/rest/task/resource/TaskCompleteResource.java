@@ -11,6 +11,8 @@ import com.liansen.flow.rest.phpClient.repository.UserGroupRepository;
 import com.liansen.flow.rest.phpClient.request.PhpUserTaskRequest;
 import com.liansen.flow.rest.task.TaskCompleteRequest;
 import com.liansen.flow.rest.task.TaskResponse;
+import com.liansen.flow.rest.task.domain.HistoricLogger;
+import com.liansen.flow.rest.task.repository.HistoricLoggerRepository;
 import com.liansen.flow.rest.variable.RestVariable;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -30,9 +32,11 @@ import org.flowable.task.api.history.HistoricTaskInstance;
 import org.flowable.task.service.impl.persistence.entity.TaskEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.flowable.bpmn.model.Process;
 
+import java.sql.Timestamp;
 import java.util.*;
 
 /**
@@ -58,19 +62,33 @@ public class TaskCompleteResource extends BaseTaskResource {
     PhpService phpService;
 
     @Autowired
+    TaskAsync taskAsync;
+
+    @Autowired
     PhpUserTaskRepository phpUserTaskRepository;
 
     @Autowired
     UserGroupRepository userGroupRepository;
 
+    @Autowired
+    HistoricLoggerRepository historicLoggerRepository;
+
     @ApiOperation("任务完成")
     @PutMapping(value = "/tasks/{taskId}/complete",name = "任务完成")
     @ResponseStatus(value = HttpStatus.OK)
+    @Transactional
     public void completeTask(@PathVariable String taskId, @RequestBody(required = false)TaskCompleteRequest taskCompleteRequest) throws Exception {
 
+        TokenUserIdUtils tokenUserIdUtils = new TokenUserIdUtils();
+        HistoricLogger historicLogger = new HistoricLogger();
+        historicLogger.setTime(new Timestamp(System.currentTimeMillis()));
+        historicLogger.setUserId(tokenUserIdUtils.tokenUserId());
         Task task = getTaskFromRequest(taskId);
+        historicLogger.setProcDefId(task.getProcessDefinitionId());
+        historicLogger.setTaskName(task.getName());
+        historicLogger.setTaskId(taskId);
         if(task.getAssignee() == null) {
-            taskService.setAssignee(taskId, Authentication.getUserId());
+            taskService.setAssignee(taskId, tokenUserIdUtils.tokenUserId());
         }
 
         Map<String,Object> completeVariables = new HashMap<String,Object>();
@@ -92,6 +110,8 @@ public class TaskCompleteResource extends BaseTaskResource {
         }else {
             if(completeVariables.isEmpty()) {
                 try{
+
+                    historicLogger.setStatus(1);
                     taskService.complete(taskId);
                 }catch (Exception e){
                 }
@@ -104,6 +124,7 @@ public class TaskCompleteResource extends BaseTaskResource {
                         phpService.modify(true,null,t.getId());
                         taskService.complete(t.getId(),completeVariables);
                     }
+                    historicLogger.setStatus(0);
                 }else{
                     BpmnModel bpmnModel = repositoryService.getBpmnModel(task.getProcessDefinitionId());
                     Process process = bpmnModel.getProcesses().get(0);
@@ -121,7 +142,6 @@ public class TaskCompleteResource extends BaseTaskResource {
                             completeVariables.put(userTask.getName(),listCandidateUsers);
                         }
                     }
-                    TokenUserIdUtils tokenUserIdUtils = new TokenUserIdUtils();
                     //token失效
                     if(tokenUserIdUtils == null || tokenUserIdUtils.tokenUserId() == null){
                         exceptionFactory.throwAuthError(CoreConstant.HEADER_TOKEN_NOT_FOUND);
@@ -130,11 +150,19 @@ public class TaskCompleteResource extends BaseTaskResource {
                     if(phpUserTaskRequest != null){
                         phpService.modify(true,phpUserTaskRequest.getPhpTaskId(),taskId);
                         taskService.complete(taskId,completeVariables);
+                        historicLogger.setStatus(1);
                     }
                 }
             }
         }
+        List<Task> tasks = taskService.createTaskQuery().list();
+        taskAsync.TaskAsync(tasks);
 
+        List<Task> taskList = taskService.createTaskQuery().processDefinitionId(task.getProcessDefinitionId()).list();
+        if(taskList.size() == 0){
+            historicLogger.setStatus(2);
+        }
+        historicLoggerRepository.save(historicLogger);
         loggerConverter.save("完成了任务 '" + task.getName() + "'");
     }
 

@@ -58,4 +58,5 @@ public class ErrorConstant {
     public static final String TASK_IDENTITY_TYPE_NOT_FOUND = "14004";
     public static final String TASK_IDENTITY_TYPE_ERROR = "14005";
     public static final String TASK_IDENTITY_NOT_FOUND = "14006";
+    public static final String TASK_PARAMS = "params";
 }
