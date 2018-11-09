@@ -7,6 +7,8 @@ public class TaskDetailResponse extends HistoricTaskResponse {
 	private boolean suspended;
 	protected String ownerName;
 	protected String assigneeName;
+	protected String  form_update;
+
 
 	public String getDelegationState() {
 		return delegationState;
@@ -51,4 +53,11 @@ public class TaskDetailResponse extends HistoricTaskResponse {
 		this.assigneeName = assigneeName;
 	}
 
+	public String getForm_update() {
+		return form_update;
+	}
+
+	public void setForm_update(String form_update) {
+		this.form_update = form_update;
+	}
 }

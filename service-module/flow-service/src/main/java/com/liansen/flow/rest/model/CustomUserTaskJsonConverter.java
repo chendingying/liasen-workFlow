@@ -22,6 +22,10 @@ public class CustomUserTaskJsonConverter extends UserTaskJsonConverter {
         CustomProperty customProperty = new CustomProperty();
         customProperty.setName("readusertaskassignment");
         customProperty.setSimpleValue(this.getPropertyValueAsString("readusertaskassignment", elementNode));
+        CustomProperty customProperty1 = new CustomProperty();
+        customProperty1.setName("form_update");
+        customProperty1.setSimpleValue(this.getPropertyValueAsString("form_update",elementNode));
+        userTask.getCustomProperties().add(customProperty1);
         userTask.getCustomProperties().add(customProperty);
         return userTask;
     }

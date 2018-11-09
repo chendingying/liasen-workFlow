@@ -20,8 +20,12 @@ import com.liansen.flow.rest.task.TaskResponse;
 import com.liansen.flow.rest.task.repository.TaskRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.flowable.bpmn.model.BpmnModel;
+import org.flowable.bpmn.model.Process;
+import org.flowable.bpmn.model.UserTask;
 import org.flowable.engine.IdentityService;
 import org.flowable.engine.ManagementService;
+import org.flowable.engine.RepositoryService;
 import org.flowable.engine.common.api.query.QueryProperty;
 import org.flowable.identitylink.api.IdentityLink;
 import org.flowable.task.api.Task;
@@ -68,6 +72,8 @@ public class TaskResource extends BaseTaskResource {
     @Autowired
     TaskAsync taskAsync;
 
+    @Autowired
+    RepositoryService repositoryService;
 
     private static Map<String, QueryProperty> allowedSortProperties = new HashMap<String, QueryProperty>();
 
@@ -153,7 +159,21 @@ public class TaskResource extends BaseTaskResource {
         if (historicTaskInstance.getEndTime() == null) {
             task = getTaskFromRequest(taskId);
         }
-        return restResponseFactory.createTaskDetailResponse(historicTaskInstance, task);
+        String form_update = "";
+        if(task != null){
+            BpmnModel bpmnModel = repositoryService.getBpmnModel(task.getProcessDefinitionId());
+            Process process = bpmnModel.getProcesses().get(0);
+            Collection<UserTask> flowElements = process.findFlowElementsOfType(UserTask.class);
+            for(UserTask userTask : flowElements){
+                if(userTask.getExtensionElements().get("form_update") == null){
+                    continue;
+                }
+                if(task.getTaskDefinitionKey().equals(userTask.getId())){
+                    form_update = userTask.getExtensionElements().get("form_update").get(0).getElementText();
+                }
+            }
+        }
+        return restResponseFactory.createTaskDetailResponse(historicTaskInstance,task,form_update);
     }
 
     @ApiOperation("修改任务")

@@ -294,11 +294,12 @@ public  class RestResponseFactory {
         return responseList;
     }
 
-    public TaskDetailResponse createTaskDetailResponse(HistoricTaskInstance historicTaskInstance, Task taskInstance) {
+    public TaskDetailResponse createTaskDetailResponse(HistoricTaskInstance historicTaskInstance, Task taskInstance,String form_update) {
         TaskDetailResponse result = new TaskDetailResponse();
         createHistoricTaskResponse(result, historicTaskInstance);
         result.setAssigneeName(getUserName(historicTaskInstance.getAssignee()));
         result.setOwnerName(getUserName(historicTaskInstance.getOwner()));
+        result.setForm_update(form_update);
         if (taskInstance != null) {
             result.setDelegationState(taskInstance.getDelegationState());
             result.setSuspended(taskInstance.isSuspended());
