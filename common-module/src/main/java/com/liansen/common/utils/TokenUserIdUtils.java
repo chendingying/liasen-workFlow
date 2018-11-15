@@ -28,6 +28,7 @@ public class TokenUserIdUtils {
         try {
             //获取token
             String token = request.getHeader("Token");
+            System.out.println("-------------"+token);
             if(ObjectUtils.isEmpty(token)) {
                 token = request.getParameter("token");
             }

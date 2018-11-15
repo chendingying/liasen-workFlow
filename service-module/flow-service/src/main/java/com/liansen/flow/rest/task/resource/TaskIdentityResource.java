@@ -6,16 +6,23 @@ import com.liansen.flow.rest.common.IdentityRequest;
 import com.liansen.flow.rest.common.IdentityResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.flowable.engine.RuntimeService;
+import org.flowable.engine.runtime.ProcessInstance;
 import org.flowable.identitylink.api.IdentityLink;
 import org.flowable.identitylink.api.history.HistoricIdentityLink;
 import org.flowable.identitylink.service.IdentityLinkType;
 import org.flowable.task.api.Task;
 import org.flowable.task.api.history.HistoricTaskInstance;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.testng.annotations.Test;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 任务候选信息接口
@@ -25,7 +32,8 @@ import java.util.List;
 @Api(description = "任务候选信息接口")
 @RestController
 public class TaskIdentityResource extends BaseTaskResource {
-
+    @Autowired
+    RuntimeService runtimeService;
     @ApiOperation("任务候选信息查询")
     @GetMapping(value = "/tasks/{taskId}/identity-links", name = "任务候选信息查询")
     public List<IdentityResponse> getIdentityLinks(@PathVariable String taskId) {
@@ -34,19 +42,28 @@ public class TaskIdentityResource extends BaseTaskResource {
         return restResponseFactory.createTaskIdentityResponseList(historicIdentityLinks);
     }
 
+    @Test
+    public void startProcessInstanceByKey() {
+        Map<String, Object> vars = new HashMap<>();
+        String[] v = {"9"};
+        vars.put("通过与不通过测试", Arrays.asList(v));
+        String processDefinitionKey = "ky:2:225004";
+        ProcessInstance startProcessInstanceByKey = runtimeService.startProcessInstanceByKey(processDefinitionKey,
+                vars);
+    }
+
     @ApiOperation("创建任务候选信息")
     @PostMapping(value = "/tasks/{taskId}/identity-links", name = "任务候选信息创建")
     @ResponseStatus(value = HttpStatus.OK)
     @Transactional
     public void createIdentityLink(@PathVariable String taskId, @RequestBody IdentityRequest taskIdentityRequest) {
         Task task = getTaskFromRequest(taskId);
-
         validateIdentityLinkArguments(taskIdentityRequest.getIdentityId(), taskIdentityRequest.getType());
-
         if (TableConstant.IDENTITY_GROUP.equals(taskIdentityRequest.getType())) {
             taskService.addGroupIdentityLink(task.getId(), taskIdentityRequest.getIdentityId(), IdentityLinkType.CANDIDATE);
         } else if (TableConstant.IDENTITY_USER.equals(taskIdentityRequest.getType())) {
             taskService.addUserIdentityLink(task.getId(), taskIdentityRequest.getIdentityId(), IdentityLinkType.CANDIDATE);
+
         }
         loggerConverter.save("创建了任务候选信息 '" + task.getName() + "'");
     }

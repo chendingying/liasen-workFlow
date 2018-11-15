@@ -2,6 +2,8 @@ package com.liansen.identity.domain;
 
 import com.liansen.common.model.ObjectMap;
 import io.swagger.annotations.ApiModelProperty;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -47,6 +49,33 @@ public class User implements java.io.Serializable {
 
 	public User() {
 	}
+	public User(String userName,String password){
+		this.userName = userName;
+		this.password = password;
+	}
+
+
+	private String token;
+
+	private String access_token;
+
+	@Transient
+	public String getAccess_token() {
+		return access_token;
+	}
+
+	public void setAccess_token(String access_token) {
+		this.access_token = access_token;
+	}
+
+	@Transient
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
@@ -88,6 +117,7 @@ public class User implements java.io.Serializable {
 
 	@Column(name = "password")
 	public String getPassword() {
+		System.out.println(password);
 		return password;
 	}
 

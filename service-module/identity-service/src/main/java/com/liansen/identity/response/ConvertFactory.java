@@ -16,8 +16,8 @@ import java.util.List;
  * @create 2018/9/5
  */
 public class ConvertFactory {
-    public static ObjectMap convertUseAuth(User user, String token) {
-        return UserConverter.convertAuth(user, token);
+    public static ObjectMap convertUseAuth(User user, String token,String access_token) {
+        return UserConverter.convertAuth(user, token,access_token);
     }
 
     public static List<ObjectMap> convertUserGroups(List<Group> groups, List<Group> roleGroups) {

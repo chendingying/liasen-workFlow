@@ -30,7 +30,7 @@ public class PhpService {
         DateFormat df1 = DateFormat.getDateInstance();//日期格式，精确到日
         PhpTaskRequest phpTaskRequest = new PhpTaskRequest();
         phpTaskRequest.setUsername(task.getAssignee());
-        phpTaskRequest.setUrl("192.168.249.211:66/work-admin/#/flow/task/?id="+task.getId()+"&userId="+task.getUserId()+ "&userName="+task.getAssignee());
+        phpTaskRequest.setUrl("192.168.249.211:66/work-admin/#/flow/task/?id="+task.getId()+"&userId="+task.getUserId());
         phpTaskRequest.setTitle(task.getName());
         phpTaskRequest.setStarttime(df1.format(task.getCreateTime()));
         if(task.getDueDate() != null){

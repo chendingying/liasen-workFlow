@@ -26,6 +26,7 @@ public class RestClient {
     private static MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
     static {
         headers.add("Token", Authentication.getToken());
+        headers.add("access_token",Authentication.getAccess_token());
     }
 
     public RestClient(RestTemplate restTemplate, ServiceUrl serviceUrl) {
@@ -53,6 +54,7 @@ public class RestClient {
             builder.queryParams(queryParams);
             HttpHeaders headers1 = new HttpHeaders();
             headers1.add("Token", Authentication.getToken());
+            headers1.add("access_token",Authentication.getAccess_token());
             response = restTemplate.exchange(builder.build().toUri(), method, new HttpEntity<>(requestbody, headers1), responseType).getBody();
             logger.debug("发送Http请求:{},方法:{},参数:{},返回:{},[{}]ms", url, method, requestbody, response, DateUtils.getTimeMillisConsume(begintime));
         } catch (RestClientException e) {

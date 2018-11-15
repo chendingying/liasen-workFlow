@@ -113,6 +113,7 @@ public class TaskResource extends BaseTaskResource {
            String sqlParams ="ID_ as id,PROC_DEF_ID_ as processDefinitionId,TASK_DEF_ID_ as taskDefinitionId,TASK_DEF_KEY_ as taskDefinitionKey,PROC_INST_ID_ as processInstanceId,EXECUTION_ID_ as executionId,NAME_ as `name`," +
                    "PARENT_TASK_ID_ as parentTaskId,DESCRIPTION_ as description,OWNER_ as `owner`,ASSIGNEE_ as assignee,START_TIME_ as startTime,CLAIM_TIME_ as claimTime,END_TIME_ as endTime,DURATION_ as durationInMillis,PRIORITY_ as priority,DUE_DATE_ as dueDate, FORM_KEY_ as formKey ,CATEGORY_ as category ,TENANT_ID_ as tenantId";
            String sql = "select "+sqlParams+" from ACT_HI_TASKINST";
+           sql +="order by " + requestParams.get("sortName")+" " + requestParams.get("sortOrder") ;
            return  pageService.queryByPageForMySQL(sql,null,Integer.valueOf(requestParams.get("pageNum")),Integer.valueOf(requestParams.get("pageSize")),null);
        }else{
            String sqlParams ="ID_ as id,PROC_DEF_ID_ as processDefinitionId,TASK_DEF_ID_ as taskDefinitionId,TASK_DEF_KEY_ as taskDefinitionKey,PROC_INST_ID_ as processInstanceId,EXECUTION_ID_ as executionId,NAME_ as `name`," +

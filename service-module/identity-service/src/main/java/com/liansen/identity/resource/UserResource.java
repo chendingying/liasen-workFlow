@@ -2,6 +2,7 @@ package com.liansen.identity.resource;
 
 import com.liansen.common.jpa.Criteria;
 import com.liansen.common.jpa.Restrictions;
+import com.liansen.common.model.Authentication;
 import com.liansen.common.model.ObjectMap;
 import com.liansen.common.resource.BaseResource;
 import com.liansen.common.resource.PageResponse;
@@ -9,16 +10,23 @@ import com.liansen.common.utils.ObjectUtils;
 import com.liansen.identity.constant.ErrorConstant;
 import com.liansen.identity.constant.TableConstant;
 import com.liansen.identity.domain.*;
+import com.liansen.identity.oauth.CustomUserDetails;
 import com.liansen.identity.repository.*;
 import com.liansen.identity.response.ConvertFactory;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.autoconfigure.ShellProperties;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import springfox.documentation.annotations.ApiIgnore;
+import sun.net.www.protocol.http.AuthenticationHeader;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -42,6 +50,8 @@ public class UserResource extends BaseResource {
     @Autowired
     private UserRoleRepository userRoleRepository;
 
+    @Autowired
+    private TokenStore tokenStore;
     private User getUserFromRequest(Integer id) {
         User user = userRepository.findOne(id);
         if (user == null) {

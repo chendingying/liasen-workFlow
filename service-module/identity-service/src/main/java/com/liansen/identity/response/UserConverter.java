@@ -9,12 +9,13 @@ import com.liansen.identity.domain.User;
  * @create 2018/9/5
  */
 public class UserConverter {
-    public static ObjectMap convertAuth(User user, String token) {
+    public static ObjectMap convertAuth(User user, String token,String access_token) {
         ObjectMap result = new ObjectMap();
         result.put("id", user.getId());
         result.put("name", user.getName());
         result.put("avatar", user.getAvatar());
         result.put("token", token);
+        result.put("access_token","Bearer "+access_token);
         return result;
     }
 }
