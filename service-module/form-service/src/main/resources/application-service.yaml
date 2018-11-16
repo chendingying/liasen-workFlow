@@ -21,7 +21,7 @@ spring:
   profiles:
     include: service-pro
   datasource:
-    url : jdbc:mysql://localhost:3306/liansen_form?useUnicode=true&characterEncoding=UTF-8
+    url : jdbc:mysql://123.56.2.28:3306/liansen_form?useUnicode=true&characterEncoding=UTF-8
     username : root
-    password: root
+    password: Service80!!
   

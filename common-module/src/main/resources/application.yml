@@ -52,7 +52,7 @@ spring:
   datasource:
     url : jdbc:mysql://mysql:3306?useUnicode=true&characterEncoding=UTF-8
     username : root
-    password : root
+    password : Service80!!
 
 
 serviceUrl:

@@ -16,6 +16,7 @@ import com.liansen.identity.response.ConvertFactory;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.autoconfigure.ShellProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.oauth2.provider.token.TokenStore;
@@ -50,8 +51,6 @@ public class UserResource extends BaseResource {
     @Autowired
     private UserRoleRepository userRoleRepository;
 
-    @Autowired
-    private TokenStore tokenStore;
     private User getUserFromRequest(Integer id) {
         User user = userRepository.findOne(id);
         if (user == null) {

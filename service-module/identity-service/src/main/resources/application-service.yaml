@@ -24,7 +24,7 @@ spring:
     username : root
     password: Service80!!
   redis:
-    host: 192.168.249.211
+    host: 1.1.1.1
     port: 6379
     password:
     maxTotal: 30
@@ -38,3 +38,9 @@ redis:
     port:  ${REDIS_PORT:6379}
     password:
     timeout: 2000
+# 正式环境
+php:
+  url: 123.56.2.28:2738
+# 测试环境
+php:
+  url: 192.168.249.211:66
