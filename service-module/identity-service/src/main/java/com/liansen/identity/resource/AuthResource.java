@@ -92,20 +92,6 @@ public  class AuthResource extends BaseResource {
         return ConvertFactory.convertUseAuth(user,token ,getToken(userDetails.getUsername()).get("access_token").toString());
     }
 
-//    @NotAuth
-//    @GetMapping("/auths/logout/{userName}")
-//    public void logout(@PathVariable("userName") String userName){
-//        String refresh_token =  getToken(userName).get("refresh_token").toString();
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-//        headers.add("Authorization","Basic MTAwODY6MTIzNDU2");
-//        MultiValueMap<String, String> params= new LinkedMultiValueMap<>();
-//        params.add("grant_type","refresh_token");
-//        params.add("refresh_token",refresh_token);
-//        HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<>(params, headers);
-//        ResponseEntity<Object> response = restTemplate.postForEntity("http://localhost:8082/oauth/token", requestEntity,Object.class);
-//        Map<String,String> map = (Map)response.getBody();
-//    }
 
     /**
      * 登录系统
@@ -129,7 +115,7 @@ public  class AuthResource extends BaseResource {
         if (!BCrypt.checkpw(password, userPassword)){
             exceptionFactory.throwConflict(ErrorConstant.USER_PWD_NOT_MATCH);
         }
-        String acess_token = "Bearer "+getToken(user.getUserName());
+        String acess_token = "Bearer "+getToken(user.getUserName()).get("access_token").toString();
         CustomUserDetails userDetails = (CustomUserDetails) tokenStore.readAuthentication(acess_token.split(" ")[1]).getPrincipal();
 
         User userDetailsUser = userDetails.getUser();
@@ -137,7 +123,7 @@ public  class AuthResource extends BaseResource {
         String token = Jwts.builder().setSubject(userDetailsUser.getUserName()).setId(userDetailsUser.getId().toString()).setIssuedAt(DateUtils.currentTimestamp())
                 .setExpiration(new Date(DateUtils.currentTimeMillis() + CoreConstant.LOGIN_USER_EXPIRE_IN)).signWith(SignatureAlgorithm.HS256, CoreConstant.JWT_SECRET).compact();
 
-        return ConvertFactory.convertUseAuth(userDetailsUser,token ,getToken(user.getUserName()).get("access_token").toString());
+        return ConvertFactory.convertUseAuth(user,token ,getToken(user.getUserName()).get("access_token").toString());
     }
 
     @NotAuth

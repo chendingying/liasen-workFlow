@@ -1,51 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="319192c9-6664-4e03-9ae8-28fd86d4534a" name="Default" comment="任务日志以及判断任务是否过期">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__aopalliance_aopalliance_1_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_jackson_jackson_core_asl_1_9_13.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_jackson_jackson_mapper_asl_1_9_13.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_actuator_1_5_3_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_actuator_1_5_3_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_security_1_5_3_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_oauth_spring_security_oauth2_2_0_13_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_oauth_spring_security_oauth2_2_3_2_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_config_4_2_2_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_core_4_2_2_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_web_4_2_2_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/oauth/ResourceServerConfiguration.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/AutodeployProcessBpmnAndImageUtils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/oauth/AuthorizationServerConfiguration.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/oauth/CustomUserDetails.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/oauth/IndexController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/oauth/ResourceServerConfiguration.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/oauth/UserService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/oauth/UserServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/oauth/WebSecurityConfiguration.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/config/Swagger2Config.java" afterPath="" />
+    <list default="true" id="319192c9-6664-4e03-9ae8-28fd86d4534a" name="Default" comment="单点登录">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common-module/common-module.iml" afterPath="$PROJECT_DIR$/common-module/common-module.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common-module/pom.xml" afterPath="$PROJECT_DIR$/common-module/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/aop/AuthCheckAspect.java" afterPath="$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/aop/AuthCheckAspect.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/client/rest/RestClient.java" afterPath="$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/client/rest/RestClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/filter/RequestCrossFilter.java" afterPath="$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/filter/RequestCrossFilter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/model/Authentication.java" afterPath="$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/model/Authentication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/utils/TokenUserIdUtils.java" afterPath="$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/utils/TokenUserIdUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/flow-service.log" afterPath="$PROJECT_DIR$/log/flow-service.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/form-service.log" afterPath="$PROJECT_DIR$/log/form-service.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/identity-service.log" afterPath="$PROJECT_DIR$/log/identity-service.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-module/flow-service/flow-service.iml" afterPath="$PROJECT_DIR$/service-module/flow-service/flow-service.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/PhpService.java" afterPath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/PhpService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskIdentityResource.java" afterPath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskIdentityResource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskResource.java" afterPath="$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskResource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-module/form-service/form-service.iml" afterPath="$PROJECT_DIR$/service-module/form-service/form-service.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-module/identity-service/identity-service.iml" afterPath="$PROJECT_DIR$/service-module/identity-service/identity-service.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-module/identity-service/pom.xml" afterPath="$PROJECT_DIR$/service-module/identity-service/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/domain/User.java" afterPath="$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/domain/User.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/resource/AuthResource.java" afterPath="$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/resource/AuthResource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/resource/UserResource.java" afterPath="$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/resource/UserResource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/response/ConvertFactory.java" afterPath="$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/response/ConvertFactory.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/response/UserConverter.java" afterPath="$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/response/UserConverter.java" />
     </list>
     <ignored path="liansen-workFlow.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,106 +32,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="AuthResource.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AuthResource.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/resource/AuthResource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="103" column="52" selection-start-line="103" selection-start-column="52" selection-end-line="103" selection-end-column="52" />
+            <state relative-caret-position="425">
+              <caret line="118" column="13" selection-start-line="118" selection-start-column="13" selection-end-line="118" selection-end-column="13" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomUserDetails.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/oauth/CustomUserDetails.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InvocableHandlerMethod.class" pinned="false" current-in-tab="false">
-        <entry file="jar://E:/java/repository/org/springframework/spring-web/4.3.8.RELEASE/spring-web-4.3.8.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConvertFactory.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/response/ConvertFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3">
-              <caret line="22" column="82" selection-start-line="22" selection-start-column="82" selection-end-line="22" selection-end-column="82" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TokenUserIdUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/utils/TokenUserIdUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CoreConstant.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/constant/CoreConstant.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="14" column="69" selection-start-line="14" selection-start-column="69" selection-end-line="14" selection-end-column="69" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ErrorConstant.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/constant/ErrorConstant.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="13" column="63" selection-start-line="13" selection-start-column="58" selection-end-line="13" selection-end-column="63" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="messages_zh_CN.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service-module/identity-service/src/main/resources/messages_zh_CN.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ExceptionFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/exception/ExceptionFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BaseResource.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/resource/BaseResource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -301,12 +166,233 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="liansen-workFlow" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="liansen-workFlow" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: org.flowable:flowable-engine:6.3.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flowable-engine-6.3.0.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flowable" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="liansen-workFlow" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: org.flowable:flowable-engine:6.3.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flowable-engine-6.3.0.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flowable" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="liansen-workFlow" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: org.flowable:flowable-engine:6.3.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flowable-engine-6.3.0.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flowable" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mapping" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="liansen-workFlow" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: org.flowable:flowable-engine:6.3.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flowable-engine-6.3.0.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flowable" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mapping" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="entity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="liansen-workFlow" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: org.flowable:flowable-engine:6.3.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flowable-engine-6.3.0.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flowable" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="create" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="liansen-workFlow" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: org.flowable:flowable-engine:6.3.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flowable-engine-6.3.0.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="META-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="liansen-workFlow" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: org.flowable:flowable-engine:6.3.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flowable-engine-6.3.0.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="META-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="services" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="liansen-workFlow" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Maven: org.flowable:flowable-engine:6.3.0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flowable-engine-6.3.0.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="META-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flowable-engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -373,11 +459,108 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="liansen-workFlow" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="liansen-workFlow" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service-module" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="identity-service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="liansen-workFlow" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="liansen-workFlow" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service-module" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="identity-service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="identity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="liansen-workFlow" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="liansen-workFlow" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service-module" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="identity-service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="identity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resource" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -408,7 +591,7 @@
       <recent name="E:\java项目\liansen-workFlow\service-module\flow-service\src\main\java\com\liansen\flow\test" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.IdentityApplication">
+  <component name="RunManager" selected="Spring Boot.FlowApplication">
     <configuration default="false" name="AuthResource" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -1055,7 +1238,8 @@
       <workItem from="1542115320440" duration="72000" />
       <workItem from="1542158516468" duration="7117000" />
       <workItem from="1542202058197" duration="868000" />
-      <workItem from="1542245260661" duration="3490000" />
+      <workItem from="1542245260661" duration="10204000" />
+      <workItem from="1542331015806" duration="1135000" />
     </task>
     <task id="LOCAL-00001" summary="用户组和用户">
       <created>1540267313975</created>
@@ -1127,7 +1311,14 @@
       <option name="project" value="LOCAL" />
       <updated>1541755147862</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="单点登录">
+      <created>1542249896418</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1542249896418</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1157,7 +1348,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="436580000" />
+    <option name="totallyTimeSpent" value="444429000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1224,22 +1415,15 @@
     <MESSAGE value="手写sql语句。任务查询" />
     <MESSAGE value="最新代码" />
     <MESSAGE value="任务日志以及判断任务是否过期" />
-    <option name="LAST_COMMIT_MESSAGE" value="任务日志以及判断任务是否过期" />
+    <MESSAGE value="单点登录" />
+    <option name="LAST_COMMIT_MESSAGE" value="单点登录" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/resource/AuthResource.java</url>
-          <line>97</line>
-          <properties />
-          <option name="timeStamp" value="259" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="260" />
+      <option name="time" value="261" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
@@ -1254,212 +1438,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/config/AsyncConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-275">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/definition/resource/ProcessDefinitionResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="55" column="57" selection-start-line="55" selection-start-column="57" selection-end-line="55" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskAsync.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-579">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskClaimResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/domain/HistoricLogger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/domain/HistoricTaskDoMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-204">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/readTask/TaskReadService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/readTask/resource/TaskReadResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/client/jdbc/JdbcClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/identity-service/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="52" column="21" selection-start-line="29" selection-start-column="6" selection-end-line="52" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common-module/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="42" column="21" selection-start-line="42" selection-start-column="21" selection-end-line="42" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/domain/TokenUser.java" />
-    <entry file="file://$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/domain/CustomUserDetails.java" />
-    <entry file="file://$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/filter/RequestCrossFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="30" column="70" selection-start-line="30" selection-start-column="70" selection-end-line="30" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/oauth/WebSecurityConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/oauth/IndexController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/oauth/AuthorizationServerConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-599">
-          <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/domain/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-725">
-          <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/resource/UserResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="65" column="94" selection-start-line="65" selection-start-column="94" selection-end-line="65" selection-end-column="94" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskLoggerResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/model/Authentication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="14" column="49" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2325">
-          <caret line="46" column="28" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/PhpService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-240">
-          <caret line="32" column="105" selection-start-line="32" selection-start-column="105" selection-end-line="32" selection-end-column="105" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/oauth/ResourceServerConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/oauth/ResourceServerConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="16" column="47" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/oauth/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/aop/AuthCheckAspect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="73" column="13" selection-start-line="73" selection-start-column="13" selection-end-line="73" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/java/repository/org/flowable/flowable-task-service-api/6.3.0/flowable-task-service-api-6.3.0.jar!/org/flowable/task/api/TaskInfo.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-616">
-          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/RestResponseFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="269" column="120" selection-start-line="269" selection-start-column="120" selection-end-line="269" selection-end-column="120" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/java/repository/org/flowable/flowable-engine/6.3.0/flowable-engine-6.3.0.jar!/org/flowable/engine/impl/cmd/CompleteTaskCmd.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskCompleteResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2681">
-          <caret line="151" column="39" selection-start-line="151" selection-start-column="39" selection-end-line="151" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/instance/resource/ProcessInstanceResource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -1520,24 +1498,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
           <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-          <folding>
-            <element signature="e#442#443#0" expanded="false" />
-            <element signature="e#476#477#0" expanded="false" />
-            <element signature="e#530#531#0" expanded="false" />
-            <element signature="e#576#577#0" expanded="false" />
-            <element signature="e#618#619#0" expanded="false" />
-            <element signature="e#656#657#0" expanded="false" />
-            <element signature="e#718#719#0" expanded="false" />
-            <element signature="e#772#773#0" expanded="false" />
-            <element signature="e#810#811#0" expanded="false" />
-            <element signature="e#844#845#0" expanded="false" />
-            <element signature="e#898#899#0" expanded="false" />
-            <element signature="e#944#945#0" expanded="false" />
-            <element signature="e#978#979#0" expanded="false" />
-            <element signature="e#1007#1008#0" expanded="false" />
-            <element signature="e#1052#1053#0" expanded="false" />
-            <element signature="e#1088#1089#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1545,9 +1505,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
           <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1563,7 +1520,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1571,9 +1527,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1589,7 +1542,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="346">
           <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1597,23 +1549,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="268">
           <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/java/repository/org/springframework/spring-web/4.3.8.RELEASE/spring-web-4.3.8.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/resource/AuthResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="103" column="52" selection-start-line="103" selection-start-column="52" selection-end-line="103" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1625,10 +1560,389 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://E:/java/repository/org/springframework/spring-web/4.3.8.RELEASE/spring-web-4.3.8.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/response/ConvertFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3">
           <caret line="22" column="82" selection-start-line="22" selection-start-column="82" selection-end-line="22" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-module/identity-service/src/main/resources/application-service.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/model/resource/ModelResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/utils/ObjectUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="107" column="44" selection-start-line="107" selection-start-column="44" selection-end-line="107" selection-end-column="44" />
+          <folding>
+            <element signature="e#2652#2653#0" expanded="false" />
+            <element signature="e#2703#2704#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/definition/resource/ProcessDefinitionResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="89" column="42" selection-start-line="89" selection-start-column="42" selection-end-line="89" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/java/repository/org/flowable/flowable-engine/6.3.0/flowable-engine-6.3.0.jar!/org/flowable/engine/repository/ProcessDefinitionQuery.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="44" column="27" selection-start-line="44" selection-start-column="27" selection-end-line="44" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/java/repository/org/flowable/flowable-engine/6.3.0/flowable-engine-6.3.0.jar!/org/flowable/engine/impl/ProcessDefinitionQueryImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="40" column="28" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/java/repository/org/flowable/flowable-engine/6.3.0/flowable-engine-6.3.0.jar!/org/flowable/db/mapping/entity/ProcessDefinitionInfo.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding>
+            <marker date="1536803788316" expanded="true" signature="435:660" ph="insert into ${prefix}ACT_PROCDEF_INFO... " />
+            <marker date="1536803788316" expanded="true" signature="1688:1706" ph="SELECT * FRO... dual" />
+            <marker date="1536803788316" expanded="true" signature="1900:2119" ph="update ${pre... " />
+            <marker date="1536803788316" expanded="true" signature="2319:2397" ph="delete from " />
+            <marker date="1536803788316" expanded="true" signature="3035:3092" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="3243:3326" ph="select * fro... ${prefix}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/java/repository/org/flowable/flowable-engine/6.3.0/flowable-engine-6.3.0.jar!/org/flowable/db/mapping/entity/Resource.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1500">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1536803788316" expanded="true" signature="383:640" ph="insert into ${prefix}ACT_GE_BYTEARRAY... " />
+            <marker date="1536803788316" expanded="true" signature="1723:1741" ph="SELECT * FRO... dual" />
+            <marker date="1536803788316" expanded="true" signature="1858:1924" ph="delete from " />
+            <marker date="1536803788316" expanded="true" signature="2539:2637" ph="select NAME_... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="2767:2888" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="3058:3152" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="3282:3398" ph="update ${pre... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/java/repository/org/flowable/flowable-engine/6.3.0/flowable-engine-6.3.0.jar!/org/flowable/db/mapping/entity/HistoricDetail.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1725">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1536803788316" expanded="true" signature="997:1474" ph="insert into ${prefix}ACT_HI_DETAIL... " />
+            <marker date="1536803788316" expanded="true" signature="3280:3298" ph="SELECT * FRO... dual" />
+            <marker date="1536803788316" expanded="true" signature="3484:4271" ph="insert into ${prefix}ACT_HI_DETAIL... " />
+            <marker date="1536803788316" expanded="true" signature="7433:7451" ph="SELECT * FRO... dual" />
+            <marker date="1536803788316" expanded="true" signature="7554:7606" ph="delete from " />
+            <marker date="1536803788316" expanded="true" signature="7681:7733" ph="delete from " />
+            <marker date="1536803788316" expanded="true" signature="7812:7864" ph="delete from " />
+            <marker date="1536803788316" expanded="true" signature="7927:7979" ph="delete from " />
+            <marker date="1536803788316" expanded="true" signature="10368:10443" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="10620:10690" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="10940:11179" ph="select RES.*... " />
+            <marker date="1536803788316" expanded="true" signature="11344:11365" ph="select count... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/java/repository/org/flowable/flowable-engine/6.3.0/flowable-engine-6.3.0.jar!/org/flowable/db/mapping/entity/Execution.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1350">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#13362#13366#0" expanded="false" />
+            <element signature="e#63433#63437#0" expanded="false" />
+            <element signature="e#63535#63539#0" expanded="false" />
+            <element signature="e#63964#63968#0" expanded="false" />
+            <element signature="e#63968#63972#0" expanded="false" />
+            <element signature="e#64060#64064#0" expanded="false" />
+            <element signature="e#64064#64068#0" expanded="false" />
+            <element signature="e#64146#64150#1" expanded="false" />
+            <element signature="e#64237#64241#0" expanded="false" />
+            <element signature="e#64317#64321#1" expanded="false" />
+            <element signature="e#64405#64409#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/java/repository/org/flowable/flowable-engine/6.3.0/flowable-engine-6.3.0.jar!/org/flowable/db/mapping/entity/Model.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="73" column="43" selection-start-line="73" selection-start-column="43" selection-end-line="73" selection-end-column="43" />
+          <folding>
+            <marker date="1536803788316" expanded="true" signature="371:1130" ph="insert into ${prefix}ACT_RE_MODEL... " />
+            <marker date="1536803788316" expanded="true" signature="3164:3182" ph="SELECT * FRO... dual" />
+            <marker date="1536803788316" expanded="true" signature="3328:5033" ph="update ${pre... " />
+            <marker date="1536803788316" expanded="true" signature="5185:5259" ph="delete from " />
+            <marker date="1536803788316" expanded="true" signature="6654:6893" ph="select disti... " />
+            <marker date="1536803788316" expanded="true" signature="7038:7068" ph="select count... " />
+            <marker date="1536803788316" expanded="true" signature="8809:8880" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="9067:9097" ph="select disti... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/domain/Group.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-168">
+          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/resource/UserResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="422">
+          <caret line="71" column="53" selection-start-line="71" selection-start-column="53" selection-end-line="71" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/java/repository/org/springframework/data/spring-data-jpa/1.11.3.RELEASE/spring-data-jpa-1.11.3.RELEASE.jar!/org/springframework/data/jpa/repository/support/SimpleJpaRepository.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="261" column="5" selection-start-line="261" selection-start-column="5" selection-end-line="261" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/java/repository/org/springframework/data/spring-data-jpa/1.11.3.RELEASE/spring-data-jpa-1.11.3.RELEASE.jar!/org/springframework/data/jpa/repository/JpaSpecificationExecutor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskAsync.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-866">
+          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskAssignResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskClaimResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/task/resource/TaskResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-837">
+          <caret line="46" column="28" selection-start-line="46" selection-start-column="28" selection-end-line="46" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-module/flow-service/src/main/java/com/liansen/flow/rest/phpClient/PhpService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="31" column="55" selection-start-line="31" selection-start-column="55" selection-end-line="31" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/java/repository/org/flowable/flowable-engine/6.3.0/flowable-engine-6.3.0.jar!/org/flowable/db/mapping/entity/ProcessDefinition.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5850">
+          <caret line="234" column="18" selection-start-line="234" selection-start-column="18" selection-end-line="234" selection-end-column="18" />
+          <folding>
+            <marker date="1536803788316" expanded="true" signature="419:1514" ph="insert into ${prefix}ACT_RE_PROCDEF... " />
+            <marker date="1536803788316" expanded="true" signature="4658:4676" ph="SELECT * FRO... dual" />
+            <marker date="1536803788316" expanded="true" signature="4861:5363" ph="update ${pre... " />
+            <marker date="1536803788316" expanded="true" signature="5476:5626" ph="update ${pre... " />
+            <marker date="1536803788316" expanded="true" signature="5759:5832" ph="delete from " />
+            <marker date="1536803788316" expanded="true" signature="7540:7630" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="7754:7826" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="8085:8327" ph="select RES.*... " />
+            <marker date="1536803788316" expanded="true" signature="8496:8517" ph="select count... " />
+            <marker date="1536803788316" expanded="true" signature="13078:13255" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="13404:13566" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="13757:13947" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="14155:14340" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="14475:14790" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="14659:14789" ph="select max(V... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="14931:15232" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="15116:15231" ph="select max(V... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="15372:15680" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="15541:15679" ph="select max(D... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="15826:16120" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="15996:16119" ph="select max(D... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="16430:16681" ph="select disti... " />
+            <marker date="1536803788316" expanded="true" signature="16899:16929" ph="select disti... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/java/repository/org/flowable/flowable-engine/6.3.0/flowable-engine-6.3.0.jar!/org/flowable/db/mapping/entity/Property.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1536803788316" expanded="true" signature="385:573" ph="insert into ${prefix}ACT_GE_PROPERTY... " />
+            <marker date="1536803788316" expanded="true" signature="1283:1301" ph="SELECT * FRO... dual" />
+            <marker date="1536803788316" expanded="true" signature="1459:1692" ph="update ${pre... " />
+            <marker date="1536803788316" expanded="true" signature="1850:1931" ph="delete from " />
+            <marker date="1536803788316" expanded="true" signature="2359:2433" ph="select VALUE... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="2535:2613" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="2696:2734" ph="select * fro... ${prefix}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/java/repository/org/flowable/flowable-engine/6.3.0/flowable-engine-6.3.0.jar!/org/flowable/db/mapping/entity/TableData.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1536803788316" expanded="true" signature="447:480" ph="select count... ${tableName}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/java/repository/org/flowable/flowable-engine/6.3.0/flowable-engine-6.3.0.jar!/org/flowable/db/mapping/entity/Deployment.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1536803788316" expanded="true" signature="391:834" ph="insert into ${prefix}ACT_RE_DEPLOYMENT... " />
+            <marker date="1536803788316" expanded="true" signature="2485:2503" ph="SELECT * FRO... dual" />
+            <marker date="1536803788316" expanded="true" signature="2667:3165" ph="update ${pre... " />
+            <marker date="1536803788316" expanded="true" signature="3273:3329" ph="delete from " />
+            <marker date="1536803788316" expanded="true" signature="4427:4671" ph="select disti... " />
+            <marker date="1536803788316" expanded="true" signature="4826:4856" ph="select count... " />
+            <marker date="1536803788316" expanded="true" signature="8219:8295" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="8578:8822" ph="select disti... " />
+            <marker date="1536803788316" expanded="true" signature="9024:9054" ph="select disti... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/java/repository/org/flowable/flowable-engine/6.3.0/flowable-engine-6.3.0.jar!/org/flowable/db/create/flowable.db2.create.history.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/java/repository/org/flowable/flowable-engine/6.3.0/flowable-engine-6.3.0.jar!/org/flowable/db/mapping/common.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/java/repository/org/flowable/flowable-engine/6.3.0/flowable-engine-6.3.0.jar!/org/flowable/db/mapping/mappings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/java/repository/org/flowable/flowable-engine/6.3.0/flowable-engine-6.3.0.jar!/org/flowable/db/mapping/entity/Attachment.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1536803788316" expanded="true" signature="965:1489" ph="insert into ${prefix}ACT_HI_ATTACHMENT... " />
+            <marker date="1536803788316" expanded="true" signature="3221:3239" ph="SELECT * FRO... dual" />
+            <marker date="1536803788316" expanded="true" signature="3401:3836" ph="update ${pre... " />
+            <marker date="1536803788316" expanded="true" signature="3998:4082" ph="delete from " />
+            <marker date="1536803788316" expanded="true" signature="5149:5232" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="5402:5521" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="5702:5826" ph="select * fro... ${prefix}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/java/repository/org/flowable/flowable-engine/6.3.0/flowable-engine-6.3.0.jar!/org/flowable/db/mapping/entity/ByteArray.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1536803788316" expanded="true" signature="383:635" ph="insert into ${prefix}ACT_GE_BYTEARRAY... " />
+            <marker date="1536803788316" expanded="true" signature="1631:1649" ph="SELECT * FRO... dual" />
+            <marker date="1536803788316" expanded="true" signature="1811:2015" ph="update ${pre... " />
+            <marker date="1536803788316" expanded="true" signature="2148:2233" ph="select BYTES... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="2379:2468" ph="delete from " />
+            <marker date="1536803788316" expanded="true" signature="2600:2678" ph="delete from " />
+            <marker date="1536803788316" expanded="true" signature="2768:2823" ph="delete from " />
+            <marker date="1536803788316" expanded="true" signature="3439:3478" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="3584:3659" ph="select * fro... ${prefix}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/java/repository/org/flowable/flowable-engine/6.3.0/flowable-engine-6.3.0.jar!/org/flowable/db/mapping/entity/Comment.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1536803788316" expanded="true" signature="953:1414" ph="insert into ${prefix}ACT_HI_COMMENT... " />
+            <marker date="1536803788316" expanded="true" signature="2938:2956" ph="SELECT * FRO... dual" />
+            <marker date="1536803788316" expanded="true" signature="3111:3535" ph="update ${pre... " />
+            <marker date="1536803788316" expanded="true" signature="3633:3686" ph="delete from " />
+            <marker date="1536803788316" expanded="true" signature="3766:3828" ph="delete from " />
+            <marker date="1536803788316" expanded="true" signature="3920:3998" ph="delete from " />
+            <marker date="1536803788316" expanded="true" signature="4972:5061" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="5225:5371" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="5495:5646" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="5807:5917" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="6079:6197" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="6370:6493" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="6666:6789" ph="select * fro... ${prefix}" />
+            <marker date="1536803788316" expanded="true" signature="6969:7139" ph="select * fro... ${prefix}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common-module/src/main/java/com/liansen/common/aop/AuthCheckAspect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-module/identity-service/src/main/java/com/liansen/identity/resource/AuthResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="118" column="13" selection-start-line="118" selection-start-column="13" selection-end-line="118" selection-end-column="13" />
           <folding />
         </state>
       </provider>
