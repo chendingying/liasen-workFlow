@@ -25,11 +25,14 @@ server:
 spring:
   profiles:
     include: service-pro
+#  datasource:
+#    url : jdbc:mysql://123.56.2.28:3306/liansen_flow?useUnicode=true&characterEncoding=UTF-8
+#    username : root
+#    password: Service80!!
   datasource:
-    url : jdbc:mysql://123.56.2.28:3306/liansen_flow?useUnicode=true&characterEncoding=UTF-8
-#    url : jdbc:mysql://localhost:3306/liansen_flow?useUnicode=true&characterEncoding=UTF-8
+    url : jdbc:mysql://localhost:3306/liansen_flow?useUnicode=true&characterEncoding=UTF-8
     username : root
-    password: Service80!!
+    password: root
 
 #熔断器超时
 #避免第一次调用失败
@@ -45,3 +48,8 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 80000
+# 正式环境
+#php:
+#  url: 123.56.2.28:2738
+php:
+  url: 192.168.249.211:66

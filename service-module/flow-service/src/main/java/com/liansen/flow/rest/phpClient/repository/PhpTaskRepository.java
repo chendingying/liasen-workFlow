@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * Created by CDZ on 2018/10/20.
  */
-@FeignClient(url = "http://123.56.2.28:8000",name="engine")
+//@FeignClient(url = "http://123.56.2.28:8000",name="engine")
+@FeignClient(url = "http://192.168.249.211:8088",name="engine")
 public interface PhpTaskRepository {
     @RequestMapping(value="/admin/api/add",method= RequestMethod.POST)
     public String getEngineMesasge(@RequestBody PhpTaskRequest phpTaskRequest);
